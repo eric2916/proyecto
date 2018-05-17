@@ -114,15 +114,15 @@
              <div class="col">
 			 <?php if(isset($error)){
 			
-					if($error==1){
-						echo 	'<div id="myerror" class="alert alert-danger" role="alert">
-									ATENCION  <a href="#" class="alert-link">la carga se ha realizado con exito</a>. 
+					if($error>=0){
+						echo '<div id="myerror" class="alert alert-danger" role="alert">
+									ATENCION  <a href="#" class="alert-link">la carga se ha realizado se han insertado ' .$error.' fila/s </a>. 
 								</div>'; 
-					}else if ($error==2){
+					}else if ($error==-1){
 						echo '<div id="myerror" class="alert alert-danger" role="alert">
 								ATENCION  <a href="#" class="alert-link">No se ha subido el archivo al servidor</a>. 
 							</div>'; 
-					}else if ($error==0){
+					}else if ($error==-2){
 						echo '<div id="myerror" class="alert alert-danger" role="alert">
 								ATENCION  <a href="#" class="alert-link">Error al cargar el archivo</a>. 
 							</div>'; 

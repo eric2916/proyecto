@@ -77,18 +77,21 @@
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item ">
-                    <a class="nav-link" href="<?php echo site_url('/GestionHome/'); ?>">Home</a>
+				<?php if($_SESSION['rolmultiple']==true){ echo '<a class="nav-link"   href="' .  site_url("/GestionHome/") . '">Home</a>'; } ?>
+                    <!-- <a class="nav-link" href="<?php echo site_url('/GestionHome/'); ?>">Home</a> -->
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link <?php if($_SESSION['rolmultiple']==false || $_SESSION['rol']==2){ echo 'disabled'; } ?>" href="<?php echo site_url('/GestionImportar/') ; ?>" >Importar <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item ">
-                    <a class="nav-link" href="<?php echo site_url('/GestionImportar/MostrarUsuarios/'); ?>">usuarios</a>
+                    <a class="nav-link" href="<?php echo site_url('/GestionImportar/MostrarUsuarios'); ?>">usuarios</a>
 				</li>
 				<li class="nav-item active">
                     <a class="nav-link" href="<?php echo site_url('/GestionImportar/MostrarItems/'); ?>">items</a>
                 </li>
+			</ul>
 			</ul>
 			<span id="infocurso" class="navbar-text nav-bar-curso" >
 			</span>

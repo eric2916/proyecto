@@ -55,7 +55,7 @@ class GestionImportar extends CI_Controller {
 		   }else{
 			  //errror al subir el csv
 			 $params['error']='No se podido subir el archivo al servidor';
-			 $data['error']=2;
+			 $data['error']=-1;
 
 		   }
 		}
@@ -88,7 +88,7 @@ class GestionImportar extends CI_Controller {
 		   }else{
 			  //errror al subir el csv
 			 $params['error']='No se podido subir el archivo al servidor';
-			 $data['error']=2;
+			 $data['error']=-1;
 			 
 		   }
 		}

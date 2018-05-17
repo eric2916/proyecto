@@ -37,6 +37,7 @@ class Item extends CI_Model {
 	}
     public function CargarNuevosItems($csv)
     {
+        $insertadas=0;
         $i=0;
 		foreach($csv as $key => $Item)
 		{      
@@ -52,6 +53,7 @@ class Item extends CI_Model {
                     );
                   //  echo $Item[0] . " " .$Item[1].  "<br>";
                     $this->db->insert('Item', $data);
+                    $insertadas=$insertadas+1;
                 }
 
             }else{
@@ -69,7 +71,7 @@ class Item extends CI_Model {
 
             $i=$i+1;
         } 
-        return 1;
+        return $insertadas;
     }
 
 
