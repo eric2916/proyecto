@@ -1,0 +1,165 @@
+@font-face {
+  font-family: 'latoregular';
+  src: url("./fonts/Lato/Lato-Regular.ttf");
+  /* IE9 Compat Modes */
+  src: url("./fonts/Lato/Lato-Regular.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: 'latobold';
+  src: url("./fonts/Lato/Lato-Bold.ttf");
+  /* IE9 Compat Modes */
+  src: url("./fonts/Lato/Lato-Bold.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: 'montserrat';
+  src: url("./fonts/montserrat/Montserrat-Bold.otf");
+  /* IE9 Compat Modes */
+  src: url("./fonts/montserrat/Montserrat-Bold.otf") format("otf");
+}
+
+@font-face {
+  font-family: 'montserratLight';
+  src: url("./fonts/montserrat/Montserrat-Light.otf");
+  /* IE9 Compat Modes */
+  src: url("./fonts/montserrat/Montserrat-Light.otf") format("otf");
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px;
+  /* Vertically center the text there */
+  background-color: grey;
+  color: rgba(19, 18, 18, 0.898);
+}
+
+/* Custom page CSS
+  -------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+body > .container {
+  padding: 60px 15px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+/* FORM VALIDATOR CSS
+  -------------------------------------------------- */
+.error {
+  border-color: red !important;
+  background-color: #ffcccc !important;
+}
+
+.valid {
+  border-color: green !important;
+  background-color: #d6f5d6 !important;
+}
+
+.alert {
+  margin-top: 20px !important;
+}
+
+.error input + span:after {
+  position: absolute;
+  margin: 5px !important;
+  top: 0px;
+  left: 370px;
+  background-color: #ffcccc;
+  width: 20px;
+  height: 40px !important;
+  content: "" !important;
+  background: url(unchecked.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.valid input + span:after {
+  border-color: green !important;
+  position: absolute;
+  margin: 5px !important;
+  top: 0px;
+  left: 370px;
+  width: 20px;
+  height: 40px !important;
+  content: "" !important;
+  background: url(checked.svg);
+  background-repeat: no-repeat;
+}
+
+.acordion {
+  -webkit-box-shadow: 0 2px 3px rgba(187, 25, 25, 0.2);
+  -moz-box-shadow: 0 2px 3px rgba(187, 25, 25, 0.2);
+  box-shadow: 0 2px 3px rgba(187, 25, 25, 0.2);
+}
+
+.nav-bar-usuario {
+  color: white !important;
+  margin-left: 3px;
+}
+
+.nav-bar-curso {
+  color: white !important;
+  margin-right: 10px;
+}
+
+.card-usuarios {
+  margin: 10px !important;
+}
+
+.card-usuarios:hover {
+  color: lightcoral;
+}
+
+.zoom {
+  transition: transform .2s;
+  /* Animation */
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.1);
+  /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+#myformlogin {
+  background-color: lightgrey;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 100px !important;
+}
+
+.login-box input:focus {
+  outline: none;
+  border-color: #665851;
+  transition: 0.5s;
+  color: #665851;
+}
+
+.box-header {
+  font-family: 'Anton', sans-serif;
+  color: red;
+}
+/*# sourceMappingURL=style.css.map */
