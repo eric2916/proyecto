@@ -24,16 +24,22 @@ class GestionHome extends CI_Controller {
 		if($_SESSION['rol']==3){
 			redirect('Welcome/index',"refresh");
 		}
+
+		
 		//=================================================
 		$params = array();
+		$alumnosajax=$this->Usuario->getFalloAjax();
+		for($i=0;$i<count($alumnosajax);$i++){
+			$params['alumnosajax'][$i]=$alumnosajax[$i]['apellido1'] . " "  . $alumnosajax[$i]['apellido2'] . " , " . $alumnosajax[$i]['nombre'] ;
+		}
 		$limit_per_page = 3;
 		$start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$total_records = $this->Usuario->get_total();
+		$total_records = $this->Usuario->get_total($_SESSION['usuario']['id']);
 
 		if ($total_records > 0) 
 		{
 			// get current page records
-			$params["results"] = $this->Usuario->get_current_page_records($limit_per_page, $start_index);          
+			$params["results"] = $this->Usuario->get_current_page_records($limit_per_page, $start_index,$_SESSION['usuario']['id']);          
 			$config['base_url'] = base_url() . 'index.php/GestionHome/index';
 			$config['total_rows'] = $total_records;
 			$config['per_page'] = $limit_per_page;
@@ -70,6 +76,10 @@ class GestionHome extends CI_Controller {
 		  	//echo $this->input->post('inpFechaIni'). " <br> ";
 		  	//echo $this->input->post('inpFechaFin'). " <br> ";
 				
+			$alumnosajax=$this->Usuario->getFalloAjax();
+			for($i=0;$i<count($alumnosajax);$i++){
+				  $params['alumnosajax'][$i]=$alumnosajax[$i]['apellido1'] . " "  . $alumnosajax[$i]['apellido2'] . " , " . $alumnosajax[$i]['nombre'] ;
+			}
 			
 			$nombre=$this->input->post('inpnombre');
 			 
@@ -79,11 +89,11 @@ class GestionHome extends CI_Controller {
 			$params = array();
 			$limit_per_page = 3;
 			$start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-			$total_records = $this->Usuario->get_total_filter($nombrecompleto[0]);
+			$total_records = $this->Usuario->get_total_filter($nombrecompleto[0],$_SESSION['usuario']['id']);
 			if ($total_records > 0) 
 			{
 				// get current page records
-				$params["results"] = $this->Usuario->get_current_page_records_filter($limit_per_page, $start_index,$nombrecompleto[0]);  
+				$params["results"] = $this->Usuario->get_current_page_records_filter($limit_per_page, $start_index,$nombrecompleto[0],$_SESSION['usuario']['id']);  
 				$config['base_url'] = base_url() . 'index.php/GestionHome/index';
 				$config['total_rows'] = $total_records;
 				$config['per_page'] = $limit_per_page;
@@ -120,9 +130,7 @@ class GestionHome extends CI_Controller {
 	}
 	public function Logout()
 	{
-		unset($_SESSION['usuario']);
-		unset($_SESSION['rol']);
-		unset($_SESSION['rolmultiple']);
+		session_unset();
 		$this->load->view('welcome_message');
 	}
 

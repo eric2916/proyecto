@@ -37,34 +37,26 @@
                 	font-size:14px;
             	}	
 			}
-
 			/* LESS THAN 62 */
-
 			@media (max-width: 61.9em) {
 				.foo{
-                font-size:14px;
-            }
+                	font-size:14px;
+            	}
 
 			}
-
 			/* LESS THAN 48 */
-
 			@media (max-width: 47.9em) {
 				.foo{
                 	font-size:14px;
             	}
 			
 			}
-
 			/* LESS THAN 34 */
-
 			@media (max-width: 33.9em) {
 				.foo{
 					font-size:8px;
 				}
 			}
-
-			
 		</style>
 	</head>
 	<body>
@@ -140,17 +132,18 @@
 							
 						</div>
 					</div>
-					<div class="card-footer clearfix bg-info">
+					<div class="card-footer clearfix mygradientcarditem">
 						<!-- <small class="text-muted"><i class="fa fa-calendar text-danger " aria-hidden="true" ></i><?php echo "&nbsp;" . $data['email'] ?></small> -->
 					</div>
 				</div>
 				<?php $i++; ?>
 				<?php } ?>
+				</div>
 				<?php } else { ?>
-				<div><div class="alert alert-danger text-center" style="margin:15px;" role="alert">No existen Ofertas</div></div>
+					<div class="alert alert-danger text-center"  role="alert">No existen items</div>
 				<?php } ?>
 			</div>
-            </div>
+            
             <div class="col">
             </div>
         </div>

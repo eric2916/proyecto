@@ -64,12 +64,12 @@ class GestionImportar extends CI_Controller {
 	}
 	public function ImportarItems()
 	{
-		if(isset($_FILES['userfile'])){
+		if(isset($_FILES['userfile2'])){
 			$errors= array();
-		   $file_name = $_FILES['userfile']['name'];
-		   $file_size =$_FILES['userfile']['size'];
-		   $file_tmp =$_FILES['userfile']['tmp_name'];
-		   $file_type=$_FILES['userfile']['type'];
+		   $file_name = $_FILES['userfile2']['name'];
+		   $file_size =$_FILES['userfile2']['size'];
+		   $file_tmp =$_FILES['userfile2']['tmp_name'];
+		   $file_type=$_FILES['userfile2']['type'];
 		   $tmp= explode('.',$file_name);
 		   $file_ext=strtolower(end($tmp));
 		   $expensions= array("csv");
@@ -91,8 +91,13 @@ class GestionImportar extends CI_Controller {
 			 $data['error']=-1;
 			 
 		   }
+		   $this->load->view('pageImportar',$data);
+		}else{
+			$data['error']=-2;
+			$this->load->view('pageImportar',$data);
 		}
-		$this->load->view('pageImportar',$data);
+	
+		
 	}
 
 	public function BorrarItems()

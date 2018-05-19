@@ -64,20 +64,9 @@
                     <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
 				<?php if($_SESSION['rolmultiple']==true || $_SESSION['rol']=="1"){ echo '<a class="nav-link" href='.  site_url('/GestionImportar/') .' >Importar</a>'; } ?>
 				
 				   <!--  <a class="nav-link <?php if($_SESSION['rolmultiple']==false || $_SESSION['rol']==2){ echo 'disabled'; } ?>" href="<?php echo site_url('/GestionImportar/') ; ?>" >Importar</a> -->
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
                 </li>
             </ul>
 			<span id="infocurso" class="navbar-text nav-bar-curso" >
@@ -113,35 +102,105 @@
                     <?php if(($i%1)==0) echo "</div><div class='card-deck'>"; ?>
                     <?php for($evals=1;$evals<4;$evals++) { ?>   
 				
-				<div class="card border-faded">
-					<div class="card-body">
-						<div class="row">
-							<div class="col-md-12 text-center">
-                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-secondary">Left</button>
-                                    <button type="button" class="btn btn-secondary">Middle</button>
-                                    <button type="button" class="btn btn-secondary">Right</button>
+                        <div class="card border-faded card-usuarios-home zoom-usuarios">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                            <?php if( $evals==1) {  ?>
+                                                <?php if($data['total']==0) {  
+                                                        $arr=$data['id'] . "x".$evals;
+                                                        echo '<a class="btn btn-primary crear-btn" role="button" href="' .site_url('GestionInforme/cargarinforme/'). $arr . '" class="btn btn-secondary"><i class="fa fa-plus-circle"></i></a>';
+                                                          ?>
+                                                <?php } ?>
+                                                <?php if($data['total']==1) {  
+                                                         $arr=$data['id'] . "x".$evals;
+                                                        echo '<a class="btn btn-primary crear-btn" role="button"  href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" ><i class="fa fa-edit"></i></a>';
+                                                        echo '<button type="button" class="btn btn-secondary"><i class="fa fa-eye"></i></button>';
+                                                          ?>
+                                                <?php } ?>
+                                                <?php if($data['total']==2) {  
+                                                         $arr=$data['id'] . "x".$evals;
+                                                        echo '<a class="btn btn-primary crear-btn" role="button" href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" ><i class="fa fa-edit"></i></a>';
+                                                        echo '<button type="button" class="btn btn-secondary"><i class="fa fa-eye"></i></button>';
+                                                          ?>
+                                                <?php } ?>
+                                                <?php if($data['total']==3) {  
+                                                        $arr=$data['id'] . "x".$evals;
+                                                        echo '<a class="btn btn-primary crear-btn" role="button" href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" ><i class="fa fa-edit"></i></a>';
+                                                        echo '<button type="button" class="btn btn-secondary"><i class="fa fa-eye"></i></button>';
+                                                          ?>
+                                                <?php } ?>
+                                            <?php }  ?>
+                                            <?php if( $evals==2) {  ?>
+                                                <?php if($data['total']==0) {  
+                                                        $arr=$data['id'] . "x".$evals;
+                                                        echo '<a class="btn btn-primary crear-btn disabled" role="button" href="' .site_url('GestionInforme/cargarinforme/'). $arr . '" ><i class="fa fa-plus-circle"></i></a>';
+                                                         ?>
+                                                <?php } ?>
+                                                <?php if($data['total']==1) {  
+                                                        $arr=$data['id'] . "x".$evals;
+                                                        echo '<a class="btn btn-primary crear-btn" role="button" href="' .site_url('GestionInforme/cargarinforme/'). $arr . '" ><i class="fa fa-plus-circle"></i></a>';
+                                                         ?>
+                                                <?php } ?>
+                                                <?php if($data['total']==2) {  
+                                                     $arr=$data['id'] . "x".$evals;
+                                                        echo '<a class="btn btn-primary crear-btn" role="button" href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" ><i class="fa fa-edit"></i></a>';
+                                                        echo '<button type="button" class="btn btn-secondary"><i class="fa fa-eye"></i></button>';
+                                                        ;  ?>
+                                                <?php } ?>
+                                                <?php if($data['total']==3) {  
+                                                     $arr=$data['id'] . "x".$evals;
+                                                        echo '<a class="btn btn-primary crear-btn" role="button" href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" class="btn btn-secondary"><i class="fa fa-edit"></i></a>';
+                                                        echo '<button type="button" class="btn btn-secondary"><i class="fa fa-eye"></i></button>';
+                                                        ;  ?>
+                                                <?php } ?>
+                                            <?php }  ?>
+                                            <?php if( $evals==3) { ?>
+                                                <?php if($data['total']==0) {  
+                                                     $arr=$data['id'] . "x".$evals;
+                                                        echo '<a class="btn btn-primary crear-btn disabled" role="button" href="' .site_url('GestionInforme/cargarinforme/'). $arr . '" class="btn btn-secondary"><i class="fa fa-plus-circle"></i></a>';
+                                                          ?>
+                                                <?php } ?>
+                                                <?php if($data['total']==1) {  
+                                                         $arr=$data['id'] . "x".$evals;
+                                                        echo '<a class="btn btn-primary crear-btn disabled" role="button" href="' .site_url('GestionInforme/cargarinforme/'). $arr . '" class="btn btn-secondary"><i class="fa fa-plus-circle"></i></a>';
+                                                          ?>
+                                                <?php } ?>
+                                                <?php if($data['total']==2) {  
+                                                         $arr=$data['id'] . "x".$evals;
+                                                        echo '<a class="btn btn-primary crear-btn" role="button" href="' .site_url('GestionInforme/cargarinforme/'). $arr . '" class="btn btn-secondary"><i class="fa fa-plus-circle"></i></a>';
+                                                         ?>
+                                                <?php } ?>
+                                                <?php if($data['total']=="3") {  
+                                                     $arr=$data['id'] . "x".$evals;
+                                                        echo '<a class="btn btn-primary crear-btn" role="button" href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" ><i class="fa fa-edit"></i></a>';
+                                                        echo '<button type="button" class="btn btn-secondary"><i class="fa fa-eye"></i></button>';
+                                                       ;  ?>
+                                                <?php } ?>
+                                          
+                                            <?php }  ?>
+                                        </div>
+                                    </div>
                                 </div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<p class="card-text montserratV2">
-									<i class="fa fa-money" style="color:red" aria-hidden="true"></i>
-									<?php echo $data['nombre'] . " ". $data['apellido1'] . " " .  $data['apellido2'];?>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="card-footer clearfix blockquote-footer">
-                        EVALUACIÓN <?php echo $evals; ?>
-					</div>
-                </div>
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <p class="card-text montserratV2">
+                                            <i class="fa fa-money" style="color:red" aria-hidden="true"></i>
+                                            <?php echo $data['nombre'] . " ". $data['apellido1'] . " " .  $data['apellido2'];?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer clearfix blockquote-footer">
+                                EVALUACIÓN <?php echo $evals; ?>
+                            </div>
+                        </div>
                 <?php } ?>
 				<?php $i++; ?>
 				<?php } ?>
 				<?php } else { ?>
-				<div><div class="alert alert-danger text-center" style="margin:15px;" role="alert">No existe alumno con ese apellido</div></div>
+				<div><div class="alert alert-danger text-center" style="margin:15px;" role="alert">No se han encontrado resultados</div></div>
 				<?php } ?>
             </div>
             <?php if (isset($links)) { ?>
@@ -254,7 +313,14 @@
                         } 
                     } else {
 
-                    alert('Hi ha algun problema amb la sol·licitud');
+                    //alert('Hi ha algun problema amb la sol·licitud');
+                        <?php if(isset($alumnosajax)){ ?>
+                         <?php for($i=0;$i<count($alumnosajax);$i++){ ?>
+                         
+                            <?php echo "availableTags.push('". $alumnosajax[$i] ."')" ; ?>
+                         
+                         <?php } ?>
+                        <?php } ?>
 
                     }
                 }else{ // aquest else és totalment opcional

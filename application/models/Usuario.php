@@ -23,7 +23,7 @@ class Usuario extends CI_Model {
 		$insertadas=0;
 		foreach($csv as $key => $Usuario)
 		{   
-		    if(count($Usuario)<9){
+		    if(count($Usuario)<10){
 				return 0;
 			}
 
@@ -31,7 +31,7 @@ class Usuario extends CI_Model {
  
 			
 			if(count($Existe)==0){
-				$res=$this->insertUsuario($Usuario);
+				$res=$this->insertUsuario($insertadas,$Usuario);
 				$insertadas=$insertadas+1;
 				if($res==FALSE){
 					return $insertadas;
@@ -40,13 +40,20 @@ class Usuario extends CI_Model {
 		} 
 		return $insertadas;
 	}
-	public function insertUsuario($Usuario){
+
+	public function getFalloAjax(){
+		$sql = "select id , nombre , apellido1, apellido2  from Usuario  left join rolusuario on rolusuario.idusuario=Usuario.id where rolusuario.idrol = 3 ";
+		$query=$this->db->query($sql);
+		return $query->result_array();
+
+	}
+	public function insertUsuario($id,$Usuario){
 
 			$this->load->helper('security');
 			$this->db->trans_start(); # Starting Transaction
 			$this->db->trans_strict(FALSE); # See Note 01. If you wish can remove as well 
 		
-			$this->db->set('id',null);
+			$this->db->set('id',intval($id)+2 );
 			$this->db->set('username', strtoupper ($Usuario[0]));
 			$this->db->set('password',do_hash($Usuario[4], 'md5'));
 			$this->db->set('nombre', strtoupper ($Usuario[1]));
@@ -54,7 +61,7 @@ class Usuario extends CI_Model {
 			$this->db->set('apellido2', strtoupper ($Usuario[3]));
 			$this->db->set('sexo', intval($Usuario[5]));
 			$this->db->set('email', $Usuario[8]);
-		
+			$this->db->set('tutor', intval($Usuario[9]));
 			$this->db->insert('Usuario');# Inserting data
 			$insert_id = $this->db->insert_id();
 			$this->db->trans_complete(); # Completing transaction
@@ -93,21 +100,21 @@ class Usuario extends CI_Model {
 		$query=$this->db->query($query_str);
 		return $query->result_array();	
 	}
-    public function get_total() 
+    public function get_total($id) 
     {
 
-		$query_str="select count(*) as total from Usuario  left join rolusuario on rolusuario.idusuario=Usuario.id where rolusuario.idrol = 3 ";
+		$query_str="select count(*) as total from Usuario  left join rolusuario on rolusuario.idusuario=Usuario.id where rolusuario.idrol = 3 and Usuario.tutor=$id ";
 		$query=$this->db->query($query_str);
 		$tot=$query->result_array();
 		return intval($tot[0]["total"]);	
 		
 	}
-    public function get_total_filter($apellido) 
+    public function get_total_filter($apellido,$id) 
     {
 		if($apellido==""){
-			$query_str="select count(*) as total from Usuario  left join rolusuario on rolusuario.idusuario=Usuario.id where rolusuario.idrol = 3  ";
+			$query_str="select count(*) as total from Usuario  left join rolusuario on rolusuario.idusuario=Usuario.id where rolusuario.idrol = 3 and Usuario.tutor=$id  ";
 		}else{
-			$query_str="select count(*) as total from Usuario  left join rolusuario on rolusuario.idusuario=Usuario.id where rolusuario.idrol = 3 AND  upper(Usuario.apellido1) like upper('".strtoupper ($apellido)."%') ";
+			$query_str="select count(*) as total from Usuario  left join rolusuario on rolusuario.idusuario=Usuario.id where rolusuario.idrol = 3 AND  upper(Usuario.apellido1) like upper('".strtoupper ($apellido)."%') AND Usuario.tutor=$id  ";
 		}
 
 		$query=$this->db->query($query_str);
@@ -115,31 +122,32 @@ class Usuario extends CI_Model {
 		return intval($tot[0]["total"]);	
 		
     }
-	public function get_current_page_records($limit_per_page, $start_index){
-		$sql=" select Usuario.id,Usuario.nombre, Usuario.apellido1,Usuario.apellido2,rolusuario .idrol,count(Informe.usuario) as total " ;
+	public function get_current_page_records($limit_per_page, $start_index,$id){
+		$sql=" select Usuario.id,Usuario.nombre, Usuario.apellido1,Usuario.apellido2,rolusuario .idrol,count(Informe.usuario) as total , Usuario.tutor " ;
 		$sql = $sql . "from Usuario left join Informe on Usuario.id=Informe.usuario ";
 		$sql = $sql . "left join rolusuario on rolusuario .idusuario=Usuario.id ";
 		$sql = $sql ."group by Usuario.id,Usuario.nombre , Usuario.apellido1,Usuario.apellido2 ";
-		$sql = $sql ."having rolusuario .idrol = 3 LIMIT $start_index , $limit_per_page ";
+		$sql = $sql ."having Usuario.tutor=$id  and rolusuario .idrol = 3 LIMIT $start_index , $limit_per_page ";
 		$query=$this->db->query($sql);
 		return $query->result_array();
 
 	}
-	public function get_current_page_records_filter($limit_per_page, $start_index,$nombre){
-		$sql=" select Usuario.id,Usuario.nombre, Usuario.apellido1,Usuario.apellido2,rolusuario .idrol,count(Informe.usuario) as total " ;
+	public function get_current_page_records_filter($limit_per_page, $start_index,$nombre,$id){
+		$sql=" select Usuario.id,Usuario.nombre, Usuario.apellido1,Usuario.apellido2,rolusuario .idrol,count(Informe.usuario) as total , Usuario.tutor " ;
 		$sql = $sql . "from Usuario left join Informe on Usuario.id=Informe.usuario ";
 		$sql = $sql . "left join rolusuario on rolusuario .idusuario=Usuario.id ";
 		$sql = $sql ."group by Usuario.id,Usuario.nombre , Usuario.apellido1,Usuario.apellido2 ";
 		if($nombre==""){
-			$sql = $sql ."having rolusuario .idrol = 3   LIMIT $start_index , $limit_per_page";
+			$sql = $sql ."having rolusuario .idrol = 3  and Usuario.tutor=$id LIMIT $start_index , $limit_per_page";
 		}else{
-			$sql = $sql ."having rolusuario .idrol = 3  AND  upper(Usuario.apellido1) like upper('".strtoupper ($nombre)."%') LIMIT $start_index , $limit_per_page";
+			$sql = $sql ."having rolusuario .idrol = 3  AND  upper(Usuario.apellido1) like upper('".strtoupper ($nombre)."%') and Usuario.tutor=$id LIMIT $start_index , $limit_per_page";
 		}
 		
 //echo $sql;exit;
 		$query=$this->db->query($sql);
 		return $query->result_array();
 	}
+
 	public function getAll() {
 		$query = $this->db->get('usuarios');
 		return $query->result_array();		
@@ -149,8 +157,8 @@ class Usuario extends CI_Model {
 		$query=$this->db->query($query_str);
 		return $query->result_array();
 	}
-	public function getUsersNoAdmin() {
-		$query_str="SELECT * FROM usuarios WHERE rol = 0 ;";
+	public function getUser($id) {
+		$query_str="SELECT * FROM Usuario WHERE id = $id ;";
 		$query=$this->db->query($query_str);
 		return $query->result_array();
 	}

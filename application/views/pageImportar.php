@@ -16,12 +16,17 @@
 
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/style.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>font-awesome/css/fontawesome-all.css">
-		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+
 
 
 		<!-- Custom styles for this template -->
 		<style type="text/css">
+		input[type="file"] {
+			font-size:1vw !important;
+			color:red;
+			border-radius:5px !important;
+		}
+
 			body {
 				margin-top:2rem;
 			}
@@ -64,7 +69,8 @@
 				}
 			}
 
-			
+
+
 		</style>
 	</head>
 	<body>
@@ -130,7 +136,7 @@
 				}
 			?>
             </div>
-            <div class="col-6">
+            <div class="col-6 col-sm-6">
 
             <div id="accordion" class="acordion">
             <div class="card">
@@ -150,12 +156,12 @@
 				   <form action="<?php echo site_url('GestionImportar/ImportarAlumnos/'); ?>" id="myform" class=" justify-content-center" method="POST"  enctype="multipart/form-data">
 						<div class="input-group">
 							<div class="custom-file">
-								<input type="file" class="custom-file-input" id="userfile" name="userfile" required>
-								<label class="custom-file-label" for="userfile">Choose file</label>
+								<input type="file" class="form-control-file" id="userfile" name="userfile" required>
+							
 								</div>
-							<div class="input-group-append">
-								<button class="btn btn-outline-secondary" type="submit">Button</button>
-							</div>
+							
+								<button id="btnImport" class="btn btn-outline-secondary" type="submit" ><i class="fa fa-upload"></i></button>
+							
 						</div>
 					</form>
 				</div>
@@ -175,14 +181,14 @@
 					<hr>
 				   <br>
 					<form action="<?php echo site_url('GestionImportar/ImportarItems/'); ?>" id="myformItem" class=" justify-content-center" method="POST"  enctype="multipart/form-data">
-						<div class="input-group">
+					<div class="input-group">
 							<div class="custom-file">
-								<input type="file" class="custom-file-input" id="userfile" name="userfile" required>
-								<label class="custom-file-label" for="userfile">Choose file</label>
+								<input type="file" class="form-control-file" id="userfile2" name="userfile2" required>
+							
 								</div>
-								<div class="input-group-append">
-								<button class="btn btn-outline-secondary" type="submit">Button</button>
-							</div>
+							
+								<button  id="btnImport2" class="btn btn-outline-secondary" type="submit"><i class="fa fa-upload"></i></button>
+							
 						</div>
 					</form>
 			    </div>
@@ -200,7 +206,7 @@
                 <div class="card-body">
                 Borrará la base datos completamente, excepto los administradores.
 				<hr>
-				<a class="btn btn-primary" href="<?php echo site_url('/GestionImportar/BorrarItems/') ; ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
+				<a class="btn btn-primary"  href="<?php echo site_url('/GestionImportar/BorrarItems/') ; ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
                 	Borrar Items
             	</a>
                 </div>
@@ -209,8 +215,10 @@
             </div>
             </div>
             <div class="col">
-
-            </div>
+				<div id="myProgress">
+					<div id="myBar">10%</div>
+				</div>
+			</div>
         </div>
     </div>
 	<div id="dialog" title="CURSO ACTUAL">
@@ -228,22 +236,35 @@
 		<!-- Bootstrap core JavaScript
     ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
+
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-        crossorigin="anonymous"></script>
-		<?php if(isset($error)){
-		echo '<script>$("#myerror").show();
-		setTimeout(function() { $("#myerror").hide(); }, 2000);</script>';
-				}
-		?>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
 		crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
-		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-		<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+
+		<?php if(isset($error)){
+
+			echo '<script>$("#myerror").show();
+			
+			setTimeout(function() { $("#myerror").hide(); }, 2000);</script>';
+
+			}
+
+		?>
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+		crossorigin="anonymous"></script>
+
+
+
 		<script src="<?php echo base_url();?>js/pageImportar.js">
+
 		</script>
+
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<script src="<?php echo base_url();?>jquery_ui/jquery-1.9.1.js"></script>
+		<script src="<?php echo base_url();?>jquery_ui/jquery-ui.js"></script>
 	</body>
 	</html>

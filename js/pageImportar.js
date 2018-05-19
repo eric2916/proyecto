@@ -1,4 +1,13 @@
 
+    $( "#myBar" ).hide( );
+    $( "#myProgress" ).hide(  );
+
+    var el = document.getElementById("btnImport");
+    var el2 = document.getElementById("btnImport2");
+    el.addEventListener("click", move1);
+    el2.addEventListener("click", move2);
+
+
 
 var cursoactual=localStorage.getItem('curso');
 console.info(cursoactual);
@@ -33,3 +42,52 @@ $(function () {
         $("#dialog").dialog("open");
         });
 });
+
+
+
+function move1() {
+    var file = document.getElementById("userfile");
+    if(file.files[0]==undefined)return;
+    var filename = file.files[0].name;
+    console.info(filename);
+
+    console.info('aqui');
+    $( "#myBar" ).show( "fast" );
+    $( "#myProgress" ).show( "fast" );
+
+    var elem = document.getElementById("myBar");   
+    var width = 10;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+      } else {
+        width++; 
+        elem.style.width = width + '%'; 
+        elem.innerHTML = width * 1  + '%';
+      }
+    }
+  }
+  function move2() {
+    var file = document.getElementById("userfile2");
+    if(file.files[0]==undefined)return;
+    var filename = file.files[0].name;
+    console.info(filename);
+
+    console.info('aqui');
+    $( "#myBar" ).show( "fast" );
+    $( "#myProgress" ).show( "fast" );
+
+    var elem = document.getElementById("myBar");   
+    var width = 10;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+      } else {
+        width++; 
+        elem.style.width = width + '%'; 
+        elem.innerHTML = width * 1  + '%';
+      }
+    }
+  }

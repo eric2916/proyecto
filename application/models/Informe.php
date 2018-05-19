@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Item extends CI_Model {
+class Informe extends CI_Model {
 	/**
 	*
 	*DAVID LAGUNAS SANCHEZ 15-05-2018
@@ -11,14 +11,64 @@ class Item extends CI_Model {
         parent::__construct();
         $this->load->helper('url');
     }
-    protected $_name = 'Item';
+    protected $_name = 'Informe';
 
-    public function BorrarItems(){
-		$query_str="DELETE FROM Resultado";
-        $query=$this->db->query($query_str);
-        
-        $query_str="DELETE FROM Item";
-		$query=$this->db->query($query_str);
+    public function  updateTexto($eval,$alumno,$tutor,$curso,$informeprovisional){
+        $data = array(
+            'texto' => $informeprovisional,
+         );
+
+        $this->db->where('tutor',$tutor);
+        $this->db->where('usuario', $alumno);
+        $this->db->where('curso', $curso);
+        $this->db->where('trimestre', $eval);
+        $this->db->update('Informe', $data); 
+    }
+
+    public function  updateTextoRevisado($idInforme,$texto){
+        $data = array(
+            'texto' => $texto,
+         );
+
+        $this->db->where('idInforme',$idInforme);
+        $this->db->update('Informe', $data);
+    }
+    public function GuardarInforme($resultados,$totalitems,$eval,$alumno,$tutor,$curso){
+    
+        $this->db->trans_begin();
+
+            $data = array(
+                'idInforme' => null,
+                'tutor' => $tutor,
+                'usuario' => $alumno,
+                'trimestre' => $eval,
+                'curso' => $curso,
+            );
+    
+            $this->db->insert('Informe', $data); 
+            $idinforme=$this->db->insert_id();
+
+            foreach ($resultados as $iditem => $valor) {
+                $insertval = array(
+                    'idResultado' => null,
+                    'item' => intval($iditem),
+                    'informe' => $idinforme,
+                    'valor' => intval($valor),
+
+                );
+                $this->db->insert('Resultado', $insertval); 
+            }
+
+        if ($this->db->trans_status() === FALSE)
+        {
+                $this->db->trans_rollback();
+                return FALSE;
+        }
+        else
+        {
+                $this->db->trans_commit();
+                return TRUE;
+        }
     }
     
 	public function yaExiste($Item){
@@ -81,6 +131,12 @@ class Item extends CI_Model {
 		$query_str="SELECT Item.*,categoria.descripcion FROM Item left join categoria on Item.categoria=categoria.idcategoria ";
 		$query=$this->db->query($query_str);
 		return $query->result_array();	
+    }
+
+    public function getInforme($eval,$curso,$alumno,$usuario){
+		$query_str="SELECT * FROM Informe WHERE tutor=$usuario AND trimestre=$eval AND curso='$curso' AND usuario=$alumno ";
+		$query=$this->db->query($query_str);
+		return $query->result_array();
     }
 
 }
