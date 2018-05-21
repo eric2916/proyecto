@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
-		<link rel="icon" href="../../../../favicon.ico">
+        <link rel="icon" href="<?php echo base_url();?>Resources/fb-logo.ico">
 		<title>Informes</title>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/reset.css">
 		<!-- Bootstrap core CSS -->
@@ -20,11 +20,13 @@
          rel = "stylesheet">
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Lora|Oswald" rel="stylesheet">
 
 		<!-- Custom styles for this template -->
 		<style type="text/css">
 			body {
-				margin-top:5rem;
+                margin-top:5rem;
+
 			}
 			.starter-template {
 				padding: 3rem 1.5rem;
@@ -33,22 +35,7 @@
 			
 
 		</style>
-		  <style>
-  .ui-autocomplete {
-    color:red;
-    font-size:10px;
-    max-height: 150px;
-    margin-bottom: 10px;
-    overflow-x: auto;
-    overflow-y: auto;
-  }
-  /* IE 6 doesn't support max-height
-   * we use height instead, but this forces the menu to always be this tall
-   */
-  * html .ui-autocomplete {
-    height: 100px;
-  }
-  </style>
+
 	</head>
 	<body>
 	<link href="<?php echo base_url(); ?>css/scrolling-nav.css" rel="stylesheet">
@@ -65,8 +52,15 @@
                 </li>
                 <li class="nav-item">
 				<?php if($_SESSION['rolmultiple']==true || $_SESSION['rol']=="1"){ echo '<a class="nav-link" href='.  site_url('/GestionImportar/') .' >Importar</a>'; } ?>
-				
 				   <!--  <a class="nav-link <?php if($_SESSION['rolmultiple']==false || $_SESSION['rol']==2){ echo 'disabled'; } ?>" href="<?php echo site_url('/GestionImportar/') ; ?>" >Importar</a> -->
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Temas</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item dropdown-tema-dark" href="#">Dark</a>
+                        <a class="dropdown-item dropdown-tema-ocre" href="#">Ocre</a>
+                        <a class="dropdown-item dropdown-tema-default" href="#">Default</a>
+                    </div>
                 </li>
             </ul>
 			<span id="infocurso" class="navbar-text nav-bar-curso" >
@@ -106,29 +100,29 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12 text-center">
-                                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="evaluaciones">
                                             <?php if( $evals==1) {  ?>
                                                 <?php if($data['total']==0) {  
                                                         $arr=$data['id'] . "x".$evals;
-                                                        echo '<a class="btn btn-primary crear-btn" role="button" href="' .site_url('GestionInforme/cargarinforme/'). $arr . '" class="btn btn-secondary"><i class="fa fa-plus-circle"></i></a>';
+                                                        echo '<a class="btn btn-primary crear-btn" role="button" href="' .site_url('GestionInforme/cargarinforme/'). $arr . '" ><i class="fa fa-plus-circle"></i></a>';
                                                           ?>
                                                 <?php } ?>
                                                 <?php if($data['total']==1) {  
                                                          $arr=$data['id'] . "x".$evals;
-                                                        echo '<a class="btn btn-primary crear-btn" role="button"  href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" ><i class="fa fa-edit"></i></a>';
-                                                        echo '<button type="button" class="btn btn-secondary"><i class="fa fa-eye"></i></button>';
+                                                        echo '<a class="btn btn-primary editar-btn" role="button"  href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" ><i class="fa fa-edit"></i></a>';
+                                                        echo '<a  href="' .site_url('GestionPdf/verpdf/'). $arr . '" class="btn btn-secondary ver-btn"><i class="fa fa-eye"></i></a>';
                                                           ?>
                                                 <?php } ?>
                                                 <?php if($data['total']==2) {  
                                                          $arr=$data['id'] . "x".$evals;
-                                                        echo '<a class="btn btn-primary crear-btn" role="button" href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" ><i class="fa fa-edit"></i></a>';
-                                                        echo '<button type="button" class="btn btn-secondary"><i class="fa fa-eye"></i></button>';
+                                                        echo '<a class="btn btn-primary editar-btn" role="button" href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" ><i class="fa fa-edit"></i></a>';
+                                                        echo '<a  href="' .site_url('GestionPdf/verpdf/'). $arr . '" class="btn btn-secondary ver-btn"><i class="fa fa-eye"></i></a>';
                                                           ?>
                                                 <?php } ?>
                                                 <?php if($data['total']==3) {  
                                                         $arr=$data['id'] . "x".$evals;
-                                                        echo '<a class="btn btn-primary crear-btn" role="button" href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" ><i class="fa fa-edit"></i></a>';
-                                                        echo '<button type="button" class="btn btn-secondary"><i class="fa fa-eye"></i></button>';
+                                                        echo '<a class="btn btn-primary editar-btn" role="button" href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" ><i class="fa fa-edit"></i></a>';
+                                                        echo '<a href="' .site_url('GestionPdf/verpdf/'). $arr . '" class="btn btn-secondary ver-btn"><i class="fa fa-eye"></i></a>';
                                                           ?>
                                                 <?php } ?>
                                             <?php }  ?>
@@ -145,14 +139,14 @@
                                                 <?php } ?>
                                                 <?php if($data['total']==2) {  
                                                      $arr=$data['id'] . "x".$evals;
-                                                        echo '<a class="btn btn-primary crear-btn" role="button" href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" ><i class="fa fa-edit"></i></a>';
-                                                        echo '<button type="button" class="btn btn-secondary"><i class="fa fa-eye"></i></button>';
+                                                        echo '<a class="btn btn-primary editar-btn" role="button" href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" ><i class="fa fa-edit"></i></a>';
+                                                        echo '<a href="' .site_url('GestionPdf/verpdf/'). $arr . '" class="btn btn-secondary ver-btn"><i class="fa fa-eye"></i></a>';
                                                         ;  ?>
                                                 <?php } ?>
                                                 <?php if($data['total']==3) {  
                                                      $arr=$data['id'] . "x".$evals;
-                                                        echo '<a class="btn btn-primary crear-btn" role="button" href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" class="btn btn-secondary"><i class="fa fa-edit"></i></a>';
-                                                        echo '<button type="button" class="btn btn-secondary"><i class="fa fa-eye"></i></button>';
+                                                        echo '<a class="btn btn-primary editar-btn" role="button" href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" class="btn btn-secondary"><i class="fa fa-edit"></i></a>';
+                                                        echo '<a href="' .site_url('GestionPdf/verpdf/'). $arr . '" class="btn btn-secondary ver-btn"><i class="fa fa-eye"></i></a>';
                                                         ;  ?>
                                                 <?php } ?>
                                             <?php }  ?>
@@ -174,8 +168,8 @@
                                                 <?php } ?>
                                                 <?php if($data['total']=="3") {  
                                                      $arr=$data['id'] . "x".$evals;
-                                                        echo '<a class="btn btn-primary crear-btn" role="button" href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" ><i class="fa fa-edit"></i></a>';
-                                                        echo '<button type="button" class="btn btn-secondary"><i class="fa fa-eye"></i></button>';
+                                                        echo '<a class="btn btn-primary editar-btn" role="button" href="' .site_url('GestionEditarInforme/cargarinforme/'). $arr . '" ><i class="fa fa-edit"></i></a>';
+                                                        echo '<a href="' .site_url('GestionPdf/verpdf/'). $arr . '" class="btn btn-secondary ver-btn"><i class="fa fa-eye"></i></a>';
                                                        ;  ?>
                                                 <?php } ?>
                                           
@@ -206,7 +200,7 @@
             <?php if (isset($links)) { ?>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12 text-center text-warning">
+				<div class="col-md-12 text-center text-warning" style="margin:10px;">
 					<?php echo $links ?>
 				</div>
 			</div>
@@ -221,6 +215,14 @@
 	</div>
 	</div>
 	</main>
+<!--     <div id="footer">
+    <div class="content-wrap">
+        <ul class="navigation">
+            <li><a href="#about"> <span>© 2018 Copyright: DAVID LAGUNAS.</span></a></li>
+            <li><a href="#Contact">w2.dlagunas@infomila.info</a></li>
+                </ul>
+            </div>
+        </div> -->
 	<footer class="footer">
       <div class="container">
 	   <span>© 2018 Copyright: DAVID LAGUNAS.</span>

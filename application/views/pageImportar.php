@@ -8,15 +8,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
-		<link rel="icon" href="../../../../favicon.ico">
-		<title>WebService Server</title>
+		<link rel="icon" href="<?php echo base_url();?>Resources/fb-logo.ico">
+		<title>Informes</title>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/reset.css">
 		<!-- Bootstrap core CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/style.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>font-awesome/css/fontawesome-all.css">
-
+		<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Lora|Oswald" rel="stylesheet">
 
 
 		<!-- Custom styles for this template -->
@@ -95,6 +95,17 @@
 				</li>
 				<li class="nav-item ">
                     <a class="nav-link" href="<?php echo site_url('/GestionImportar/MostrarItems/'); ?>">items</a>
+				</li>
+				<li class="nav-item ">
+                    <a class="nav-link" href="<?php echo site_url('/GestionImportar/provawebservice'); ?>">webservice</a>
+				</li>
+				<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Temas</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item dropdown-tema-dark" href="#">Dark</a>
+                        <a class="dropdown-item dropdown-tema-ocre" href="#">Ocre</a>
+                        <a class="dropdown-item dropdown-tema-default" href="#">Default</a>
+                    </div>
                 </li>
 			</ul>
 			<span id="infocurso" class="navbar-text nav-bar-curso" >

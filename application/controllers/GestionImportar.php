@@ -114,4 +114,11 @@ class GestionImportar extends CI_Controller {
 		$data['items']=$this->Item->getAllItems();
 		$this->load->view('pageMostrarItems',$data);
 	}
+
+	public function provawebservice(){
+
+		$emps=json_decode(file_get_contents(base_url() . '/index.php/api/example/informe?idalumno=2&idtrimestre=2'));
+		$result['restaurants'] = json_decode($emps->object);
+		var_dump($result['restaurants'] );exit;
+	}
 }

@@ -56,6 +56,7 @@ class Welcome extends CI_Controller {
 					redirect('GestionHome/index',"refresh");
 				}else if($_SESSION['rol']=="3"){
 					//ir a familias
+					redirect('GestionFamilia/index',"refresh");
 				}
 			}
 			

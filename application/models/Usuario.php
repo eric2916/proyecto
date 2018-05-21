@@ -233,6 +233,8 @@ class Usuario extends CI_Model {
 		return false;
 	}
 
+
+
 	
 	public function ModificarApi($idUser,$newKey){
 		if($newKey==""){

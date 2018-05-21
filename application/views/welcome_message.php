@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
-		<link rel="icon" href="../../../../favicon.ico">
+		<link rel="icon" href="<?php echo base_url();?>Resources/fb-logo.ico">
 		<title>WebService Server</title>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/reset.css">
 		<!-- Bootstrap core CSS -->
@@ -18,6 +18,7 @@
 		<link rel="stylesheet" href="<?php echo base_url();?>css/animate.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<link rel="stylesheet" href="<?php echo base_url();?>font-awesome/css/fontawesome-all.css">
+		<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Lora|Oswald" rel="stylesheet">
 		<!-- Custom styles for this template -->
 		<style type="text/css">
 			body {
@@ -27,6 +28,7 @@
 				padding: 0.5rem 1.5rem;
 				text-align: center;
 			}
+
 
 		</style>
 	</head>

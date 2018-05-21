@@ -18,6 +18,12 @@ class Item extends CI_Model {
         $query=$this->db->query($query_str);
         
         $query_str="DELETE FROM Item";
+        $query=$this->db->query($query_str);
+        
+        $query_str="DELETE FROM Respuesta";
+        $query=$this->db->query($query_str);
+        
+        $query_str="DELETE FROM Informe";
 		$query=$this->db->query($query_str);
     }
     
@@ -49,9 +55,10 @@ class Item extends CI_Model {
                 if(count($res)==0){
                     $data = array(
                         'iditem' =>intval( $Item[0]),
-                        'texto' => $Item[1],
+                        'texto' => utf8_encode($Item[1]),
                         'categoria' => $Item[2]
                     );
+
                   //  echo $Item[0] . " " .$Item[1].  "<br>";
                     $this->db->insert('Item', $data);
                     $insertadas=$insertadas+1;
@@ -62,7 +69,7 @@ class Item extends CI_Model {
                 if(count($res)==0){
                     $data = array(
                         'item' => intval($Item[0]),
-                        'texto' => $Item[1],
+                        'texto' => utf8_encode($Item[1]),
                         'categoria' => $Item[2]
                     );
                   //  echo $Item[0] . " " .$Item[1]. " ". $Item[2]. "<br>";

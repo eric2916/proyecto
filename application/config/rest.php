@@ -128,7 +128,7 @@ $config['rest_auth'] = FALSE;
 |
 */
 //$config['auth_source'] = 'ldap';
-$config['auth_source'] = 'library';
+//$config['auth_source'] = 'library';
 
 /*
 |--------------------------------------------------------------------------
@@ -139,7 +139,7 @@ $config['auth_source'] = 'library';
 | requests etc), set to TRUE;
 |
 */
-$config['allow_auth_and_keys'] = TRUE;
+$config['allow_auth_and_keys'] = FALSE;
 $config['strict_api_and_auth'] = TRUE; // force the use of both api and auth before a valid api request is made
 
 /*
@@ -326,7 +326,7 @@ $config['rest_keys_table'] = 'keys';
 |   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 |
 */
-$config['rest_enable_keys'] = TRUE;
+$config['rest_enable_keys'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------

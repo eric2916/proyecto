@@ -11,7 +11,9 @@ class GestionInforme extends CI_Controller {
         $this->load->library('table');
 		$this->load->library('pagination');
 		$this->load->database(); //load library database
-
+		if (session_status() !== PHP_SESSION_ACTIVE) { 
+			redirect('Welcome/index',"refresh");
+		}
     }
     
 	public function index()
@@ -59,7 +61,9 @@ class GestionInforme extends CI_Controller {
 	}
 	public function generarinforme()
 	{
-
+		if (session_status() !== PHP_SESSION_ACTIVE) { 
+			redirect('Welcome/index',"refresh");
+		}
 		//no se admiten personas sin login
 		if(!isset($_SESSION['usuario'])){
 			redirect('Welcome/index',"refresh");
@@ -128,9 +132,10 @@ class GestionInforme extends CI_Controller {
 	public function redactarinforme($arrayOrdenada){
 		$respuestas=$this->Respuesta->getRespuestas();
 		$alum=$this->Usuario->getUser($_SESSION['alumno']);
+		$flag1=0;
 		$informe="";
 		if($alum[0]['sexo']==0){
-			$informe="Evaluación de el alumno " .  ucfirst(strtolower ($alum[0]['nombre'])) ." ".  ucfirst( strtolower ($alum[0]['apellido1'])) . ": \n"  ;
+			$informe="Evaluación del alumno " .  ucfirst(strtolower ($alum[0]['nombre'])) ." ".  ucfirst( strtolower ($alum[0]['apellido1'])) . ": \n"  ;
 		}else{
 			$informe="Evaluación de la alumna " .  ucfirst(strtolower ($alum[0]['nombre']))." ".   ucfirst(strtolower ($alum[0]['apellido1'])) .": \n";
 		}
@@ -138,7 +143,7 @@ class GestionInforme extends CI_Controller {
 		$arrayOrdenadaCat1=array();
 		$arrayOrdenadaCat2=array();
 		foreach($arrayOrdenada as $key => $value){
-			if( $key < (count($arrayOrdenada)/2) ){
+			if( $key <= (count($arrayOrdenada)/2) ){
 				$arrayOrdenadaCat1[$key]=$value;
 			}else{
 				$arrayOrdenadaCat2[$key]=$value;
@@ -147,29 +152,39 @@ class GestionInforme extends CI_Controller {
 
 		if (in_array(1, $arrayOrdenadaCat1))
   		{
-
+			$flag1=1;
 			$informe=$informe. "Hay que reforzarlo en ";
 			foreach($arrayOrdenadaCat1 as $key => $value){
-				if( $value==1 && ($key < 9 ) ){
+				if( $value==1 && ($key<= 10 ) ){
 					$informe=$informe. " " . $respuestas[($key-1)]["texto"] . " , ";
 				}
 			}		
 		  }
 		if (in_array(2, $arrayOrdenadaCat1))
   		{
-			$informe=$informe. " muestra poco interés en ";
+			if($flag1==0){
+				$informe=$informe. "Muestra poco interés en ";
+				$flag1=1;
+			}else{
+				$informe=$informe. " muestra poco interés en ";
+			}
 			foreach($arrayOrdenadaCat1 as $key => $value){
-				if( $value==2 && ($key < 9 )){
+				if( $value==2 && ($key <= 10)){
 					$informe=$informe. " " . $respuestas[($key-1)]["texto"] . " , ";
 				}
 			}
 		  }
 		if (in_array(3, $arrayOrdenadaCat1))
   		{
-
-			$informe=$informe. " tiene habilidades y destrezas en ";
+			if($flag1==0){
+				$informe=$informe. "Tiene habilidades y destrezas en ";
+				$flag1=1;
+			}else{
+				$informe=$informe. " tiene habilidades y destrezas en ";
+			}
+			
 			foreach($arrayOrdenadaCat1 as $key => $value){
-				if( $value==3 && ($key < 9 )){
+				if( $value==3 && ($key <=10 )){
 					$informe=$informe. " " . $respuestas[($key-1)]["texto"] . " , ";
 				}
 			}
@@ -177,18 +192,30 @@ class GestionInforme extends CI_Controller {
   		}
 		if (in_array(4, $arrayOrdenadaCat1))
   		{
-			$informe=$informe. " Es trabajador, persevera  y coopera en ";
+			if($flag1==0){
+				$informe=$informe. "Es trabajador, persevera y coopera en ";
+				$flag1=1;
+			}else{
+				$informe=$informe. " es trabajador, persevera y coopera en ";
+			}
+		
 			foreach($arrayOrdenadaCat1 as $key => $value){
-				if( $value==4 && ($key < 9 )){
+				if( $value==4 && ($key <=10 )){
 					$informe=$informe. " " . $respuestas[($key-1)]["texto"] . " , ";
 				}
 			}
 		  }
 		if (in_array(5, $arrayOrdenadaCat1))
   		{
-			$informe=$informe. " posee gran potencial  en  ";
+			if($flag1==0){
+				$informe=$informe. "Posee gran potencial en ";
+				$flag1=1;
+			}else{
+				$informe=$informe. " posee gran potencial en ";
+			}
+			
 			foreach($arrayOrdenadaCat1 as $key => $value){
-				if( $value==5 && ($key < 9 )){
+				if( $value==5 && ($key <=10 )){
 					$informe=$informe. " " . $respuestas[($key-1)]["texto"] . " , ";
 				}
 			}
@@ -196,23 +223,29 @@ class GestionInforme extends CI_Controller {
 		$informe=rtrim($informe,", ");
 		$informe=$informe. " .";
 		$informe=$informe. "\n";
-		$informe=$informe. "ACTITUD DEN CLASE: \n";
-
+		$informe=$informe. "ACTITUD EN CLASE: \n";
+		$flag2=0;
 		if (in_array(1, $arrayOrdenadaCat2))
 		{
-
+		  $flag2=1;
 		  $informe=$informe. "Muestra poco interés en ";
 		  foreach($arrayOrdenadaCat2 as $key => $value){
-			  if( $value==1 && ($key > 8 )){
+			  if( $value==1 && ($key > 10 )){
 				  $informe=$informe. " " . $respuestas[($key-1)]["texto"] . " , ";
 			  }
 		  }		
 		}
 	  if (in_array(2, $arrayOrdenadaCat2))
 		{
-		  $informe=$informe. " necesita apoyo en ";
+			if($flag2==0){
+				$informe=$informe. "Necesita apoyo en ";
+				$flag2=1;
+			}else{
+				$informe=$informe. " necesita apoyo en ";
+			}
+		 
 		  foreach($arrayOrdenadaCat2 as $key => $value){
-			  if( $value==2 && ($key > 8 )){
+			  if( $value==2 && ($key > 10 )){
 				  $informe=$informe. " " . $respuestas[($key-1)]["texto"] . " , ";
 	
 			  }
@@ -220,10 +253,15 @@ class GestionInforme extends CI_Controller {
 		}
 	  if (in_array(3, $arrayOrdenadaCat2))
 		{
-
-		  $informe=$informe. " muestra avance en ";
+			if($flag2==0){
+				$informe=$informe. "Muestra avance en ";
+				$flag2=1;
+			}else{
+				$informe=$informe. " muestra avance en ";
+			}
+		 
 		  foreach($arrayOrdenadaCat2 as $key => $value){
-			  if( $value==3 && ($key > 8 )){
+			  if( $value==3 && ($key > 10 )){
 				  $informe=$informe. " " . $respuestas[($key-1)]["texto"] . " , ";
 				 
 			  }
@@ -232,9 +270,15 @@ class GestionInforme extends CI_Controller {
 		}
 	  if (in_array(4, $arrayOrdenadaCat2))
 		{
-		  $informe=$informe. " muestra madurez y compromiso en ";
+			if($flag2==0){
+				$informe=$informe. "Muestra madurez y compromiso en ";
+				$flag2=1;
+			}else{
+				$informe=$informe. " muestra madurez y compromiso en ";
+			}
+		  
 		  foreach($arrayOrdenadaCat2 as $key => $value){
-			  if( $value==4 && ($key > 8 )){
+			  if( $value==4 && ($key > 10 )){
 				  $informe=$informe. " " . $respuestas[($key-1)]["texto"] . " , ";
 				 
 			  }
@@ -242,9 +286,15 @@ class GestionInforme extends CI_Controller {
 		}
 	  if (in_array(5, $arrayOrdenadaCat2))
 		{
-		  $informe=$informe. " hace un excelente trabajo en ";
+			if($flag2==0){
+				$informe=$informe. "Hace un excelente trabajo en ";
+				$flag2=1;
+			}else{
+				$informe=$informe. " hace un excelente trabajo en ";
+			}
+		 
 		  foreach($arrayOrdenadaCat2 as $key => $value){
-			  if( $value==5 && ($key > 8 )){
+			  if( $value==5 && ($key > 10 )){
 				  $informe=$informe. " " . $respuestas[($key-1)]["texto"] . " , ";
 				 
 			  }

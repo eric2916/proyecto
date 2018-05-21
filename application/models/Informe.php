@@ -70,7 +70,31 @@ class Informe extends CI_Model {
                 return TRUE;
         }
     }
-    
+    public function GuardarupdateInforme($resultados,$totalitems,$eval,$alumno,$tutor,$curso){
+            $this->db->trans_begin();
+            $informe=$this->getInforme($eval,$curso,$alumno,$tutor);
+
+
+            foreach ($resultados as $iditem => $valor) {
+                $insertval = array(
+                    'valor' => intval($valor),
+                );
+                $this->db->where('item', $iditem);
+                $this->db->where('informe',$informe[0]['idInforme']);
+                $this->db->update('Resultado', $insertval); 
+            }
+
+        if ($this->db->trans_status() === FALSE)
+        {
+                $this->db->trans_rollback();
+                return FALSE;
+        }
+        else
+        {
+                $this->db->trans_commit();
+                return TRUE;
+        }
+    }
 	public function yaExiste($Item){
 		$query_str="SELECT * FROM Item WHERE idItem=". $Item[0] ." ;"; 
 		//echo $query_str; exit;
@@ -135,6 +159,59 @@ class Informe extends CI_Model {
 
     public function getInforme($eval,$curso,$alumno,$usuario){
 		$query_str="SELECT * FROM Informe WHERE tutor=$usuario AND trimestre=$eval AND curso='$curso' AND usuario=$alumno ";
+		$query=$this->db->query($query_str);
+		return $query->result_array();
+    }
+    public function getInformeWebService($alumno,$eval){
+       
+        if($eval==null || $eval==''){
+            $query_str="SELECT * FROM Informe WHERE usuario=$alumno ";
+            $query=$this->db->query($query_str);
+
+            $temp=$query->result_array();
+            if(count($temp)==0){
+                return $temp;
+            }
+            $res['informe']=$temp;
+            $query="SELECT Informe.*,Resultado.* FROM  Resultado left join Informe on Resultado.idResultado=Informe.idInforme  where  Informe=$alumno ";
+            $q=$this->db->query($query);
+            $temp2=$q->result_array();
+            $res['resultado']= $temp2;
+            return $res;  
+
+        }
+  
+        $query_str="SELECT * FROM Informe WHERE  trimestre=$eval AND usuario=$alumno ";
+        $query=$this->db->query($query_str);
+
+        $temp=$query->result_array();
+      
+        if(count($temp)==0){
+            return $temp;
+        }
+       
+        $res['informe']=$temp[0];
+        $query="SELECT * FROM  Resultado where Informe =" . $res['informe']['idInforme'] . " ";
+        $q=$this->db->query($query);
+        $temp2=$q->result_array();
+        $res['resultado']= $temp2;
+        return $res;  
+        
+    }
+    public function getInformebyid($idInforme){
+		$query_str="SELECT * FROM Informe WHERE idInforme=$idInforme ";
+		$query=$this->db->query($query_str);
+		return $query->result_array();
+    }
+    public function getInformeEdit($eval,$alumno,$tutor){
+        $query_str="SELECT * FROM Informe left outer join  Resultado on idInforme=informe where trimestre = $eval  AND tutor=$tutor AND usuario=$alumno";
+        $query=$this->db->query($query_str);
+		return $query->result_array();
+		
+    }
+    
+    public function getAllInformesByAlumno($alumno){
+		$query_str="SELECT * FROM Informe WHERE usuario=$alumno ";
 		$query=$this->db->query($query_str);
 		return $query->result_array();
     }

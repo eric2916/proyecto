@@ -1,0 +1,29 @@
+onLoadTemplateList(
+    [
+        {
+            thumbnail:'/data/janvas_v1/templates/letterhead/previews/letterhead_01_template.jpg',
+            templateUrl:'/data/janvas_v1/templates/letterhead/letterhead_01_template.svg'
+        },
+        {
+            thumbnail:'/data/janvas_v1/templates/letterhead/previews/letterhead_02_template.jpg',
+            templateUrl:'/data/janvas_v1/templates/letterhead/letterhead_02_template.svg'
+        },
+        {
+            thumbnail:'/data/janvas_v1/templates/letterhead/previews/letterhead_03_template.jpg',
+            templateUrl:'/data/janvas_v1/templates/letterhead/letterhead_03_template.svg'
+        },
+        {
+            thumbnail:'/data/janvas_v1/templates/letterhead/previews/letterhead_04_template.jpg',
+            templateUrl:'/data/janvas_v1/templates/letterhead/letterhead_04_template.svg'
+        },
+        {
+            thumbnail:'/data/janvas_v1/templates/letterhead/previews/letterhead_05_template.jpg',
+            templateUrl:'/data/janvas_v1/templates/letterhead/letterhead_05_template.svg'
+        },
+        {
+            thumbnail:'/data/janvas_v1/templates/letterhead/previews/letterhead_06_template.jpg',
+            templateUrl:'/data/janvas_v1/templates/letterhead/letterhead_06_template.svg'
+        }
+       
+    ]
+);

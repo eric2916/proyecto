@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
-		<link rel="icon" href="../../../../favicon.ico">
+        <link rel="icon" href="<?php echo base_url();?>Resources/fb-logo.ico">
 		<title>Informes</title>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/reset.css">
 		<!-- Bootstrap core CSS -->
@@ -16,6 +16,7 @@
 
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/style.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>font-awesome/css/fontawesome-all.css">
+        <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Lora|Oswald" rel="stylesheet">
 
 		<!-- Custom styles for this template -->
 		<style type="text/css">
@@ -82,6 +83,14 @@
 				
 				   <!--  <a class="nav-link <?php if($_SESSION['rolmultiple']==false || $_SESSION['rol']==2){ echo 'disabled'; } ?>" href="<?php echo site_url('/GestionImportar/') ; ?>" >Importar</a> -->
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Temas</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item dropdown-tema-dark" href="#">Dark</a>
+                        <a class="dropdown-item dropdown-tema-ocre" href="#">Ocre</a>
+                        <a class="dropdown-item dropdown-tema-default" href="#">Default</a>
+                    </div>
+                </li>
             </ul>
 			<span id="infocurso" class="navbar-text nav-bar-curso" >
 			</span>
@@ -103,7 +112,7 @@
                 <li class="list-inline-item"><strong><span id="spncurso"> </span></strong></li>
             </ul>
         <div id="mytable" class="table-responsive" style="<?php if(isset($informeprovisional)){ echo 'display:none'; } ?>">
-        <form if="formInforme" action="<?php echo site_url('GestionInforme/generarinforme'); ?>" method="post">
+        <form if="formInforme" action="<?php echo site_url('GestionEditarInforme/updateinforme'); ?>" method="post">
             <table class="table table-hover">
                 <caption><?php if(isset($informeprovisional)==false){ echo '<button type="submit" class="btn btn-warning">GUARDAR</button>'; } ?></caption>
                 <thead>
@@ -117,12 +126,20 @@
                     </tr>
                 </thead>
                 <tbody>
+                <?php $flag=0; ?>
                 <?php foreach ($items as $data) { ?>
                     <tr>
+                    <?php if($flag==0) { ?>
+                        <th id="par" colspan="6" style="background-color:#ccffcc" scope="colgroup">ADQUISICIÓN DE HABITOS:</th>
+                    <?php } else if($flag==10) { ?> 
+                        <th id="par" colspan="6" style="background-color:#ffccb3" scope="colgroup">ACTITUD EN CLASE:</th>
+                    <?php } else { ?>   
                     <th scope="row" > <?php echo $data["texto"];  ?></th>
                     <?php for($i=0;$i<5;$i++) { ?>
-                        <td><input type="radio" name="radio<?php echo $data["iditem"];  ?>" value="<?php echo ($i+1);  ?>" required data-toggle="tooltip" data-placement="top" title="radio con valor <?php echo ($i+1);  ?>"> </td>
+                        <td><input type="radio" name="radio<?php echo $data["iditem"];  ?>" <?php if($informeResultados[$data["iditem"]-1]["valor"]==($i+1)){ echo "checked";} ?> value="<?php echo ($i+1);  ?>" required data-toggle="tooltip" data-placement="top" title="radio con valor <?php echo ($i+1);  ?>"> </td>
                      <?php } ?>  
+                     <?php } ?>  
+                     <?php $flag=$flag +1; ?>  
                      </tr>        
                 <?php } ?>
                 </tbody>
