@@ -36,7 +36,9 @@ class GestionFamilia extends CI_Controller {
 
     }
 
-
+	public function Location(){
+		$this->load->view("pageContact");
+	}
 
 
 

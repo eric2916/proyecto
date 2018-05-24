@@ -62,6 +62,13 @@
                         <a class="dropdown-item dropdown-tema-default" href="#">Default</a>
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Jasper</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown02">
+                        <a class="dropdown-item dropdown-jasper-server" href="http://92.222.27.83:8080/jasperserver/flow.html?_flowId=viewReportFlow&standAlone=true&_flowId=viewReportFlow&ParentFolderUri=%2Fw2-dlagunas&reportUnit=%2Fw2-dlagunas%2Fproyecto&j_acegi_security_check&j_username=w2-dlagunas&j_password=46781187S">JASPER SERVER</a>
+                        <a class="dropdown-item dropdown-jasper-php" href="#">JASPER PHP</a>
+                    </div>
+                </li>
             </ul>
 			<span id="infocurso" class="navbar-text nav-bar-curso" >
 			</span>
@@ -247,7 +254,7 @@
 
 	</script>
 	<script>
-    var availableTags=null;
+    var availableTags=new Array();
     $( function() {
         availableTags = [];
         $( "#tags" ).autocomplete({
@@ -283,7 +290,7 @@
             }
 
             var data = "protocol=1&nombre="+nom+"&apellido1="+ape1+"&apellido2="+ape2+"&curso="+curs;
-            
+            console.info('<?php echo site_url('servidorajax'); ?>');
             xhr.open("POST", '<?php echo site_url('servidorajax'); ?>', true); 
                     
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

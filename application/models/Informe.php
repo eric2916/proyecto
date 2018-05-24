@@ -158,7 +158,8 @@ class Informe extends CI_Model {
     }
 
     public function getInforme($eval,$curso,$alumno,$usuario){
-		$query_str="SELECT * FROM Informe WHERE tutor=$usuario AND trimestre=$eval AND curso='$curso' AND usuario=$alumno ";
+    //	$query_str="SELECT * FROM Informe WHERE tutor=$usuario AND trimestre=$eval AND curso='$curso' AND usuario=$alumno ";
+        $query_str="SELECT * FROM Informe WHERE trimestre=$eval AND curso='$curso' AND usuario=$alumno ";
 		$query=$this->db->query($query_str);
 		return $query->result_array();
     }
@@ -204,7 +205,8 @@ class Informe extends CI_Model {
 		return $query->result_array();
     }
     public function getInformeEdit($eval,$alumno,$tutor){
-        $query_str="SELECT * FROM Informe left outer join  Resultado on idInforme=informe where trimestre = $eval  AND tutor=$tutor AND usuario=$alumno";
+       // $query_str="SELECT * FROM Informe left outer join  Resultado on idInforme=informe where trimestre = $eval  AND tutor=$tutor AND usuario=$alumno";
+       $query_str="SELECT * FROM Informe left outer join  Resultado on idInforme=informe where trimestre = $eval  AND usuario=$alumno";
         $query=$this->db->query($query_str);
 		return $query->result_array();
 		

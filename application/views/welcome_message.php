@@ -9,7 +9,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<link rel="icon" href="<?php echo base_url();?>Resources/fb-logo.ico">
-		<title>WebService Server</title>
+		<title>Informes</title>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/reset.css">
 		<!-- Bootstrap core CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">

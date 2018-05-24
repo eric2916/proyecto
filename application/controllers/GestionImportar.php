@@ -117,8 +117,29 @@ class GestionImportar extends CI_Controller {
 
 	public function provawebservice(){
 
-		$emps=json_decode(file_get_contents(base_url() . '/index.php/api/example/informe?idalumno=2&idtrimestre=2'));
-		$result['restaurants'] = json_decode($emps->object);
-		var_dump($result['restaurants'] );exit;
+		$curl_handle = curl_init();
+		curl_setopt($curl_handle, CURLOPT_URL, 'localhost/proyecto/index.php/api/Example/Users');
+		curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($curl_handle, CURLOPT_POST, 1);
+		curl_setopt($curl_handle, CURLOPT_POSTFIELDS, array(
+			'idalumno' => 2,
+			'idtrimestre'=>1
+		));   
+		 
+
+		 
+		$buffer = curl_exec($curl_handle);
+		curl_close($curl_handle);
+		$result = json_decode($buffer);
+		var_dump($result);exit;
+		if(isset($result->status) && $result->status == 'success')
+		{
+			echo 'Ejemplo del web service.';
+		}
+		 
+		else
+		{
+			echo 'Something has gone wrong en el web service';
+		}
 	}
 }

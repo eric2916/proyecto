@@ -424,27 +424,27 @@ footer {
 }
 
 .htmlanimation #main {
-  width: 100px;
-  height: 30px;
+  width: 165px;
+  height: 50px;
   margin: auto;
 }
 
 .htmlanimation #outer-circle {
-  -webkit-box-shadow: 0 0 50px 10px #453D9B;
-  -moz-box-shadow: 0 0 50px 10px #453D9B;
-  box-shadow: 0 0 50px 10px #453D9B;
-  border: 10px solid #ECEBFA;
+  -webkit-box-shadow: 0 0 50px 5px #453D9B;
+  -moz-box-shadow: 0 0 50px 5px #453D9B;
+  box-shadow: 0 0 50px 5px #453D9B;
+  border: 5px solid #ECEBFA;
   border-top-color: #746EBB;
-  margin: 20% auto;
+  margin: 5% auto;
   text-align: center;
   background: -webkit-linear-gradient(top, #ffffff 48%, #ecebfa 49%, #ecebfa 51%, #fff 52%);
   background: -moz-linear-gradient(top, #ffffff 48%, #ecebfa 49%, #ecebfa 51%, #fff 52%);
   background: linear-gradient(to bottom, #ffffff 48%, #ecebfa 49%, #ecebfa 51%, #fff 52%);
-  width: 220px;
-  height: 220px;
-  -webkit-border-radius: 220px;
-  -moz-border-radius: 220px;
-  border-radius: 220px;
+  width: 110px;
+  height: 110px;
+  -webkit-border-radius: 110px;
+  -moz-border-radius: 110px;
+  border-radius: 110px;
   -webkit-animation: turning_cw 5s infinite;
   -moz-animation: turning_cw 5s infinite;
   animation: turning_cw 5s infinite;
@@ -453,13 +453,13 @@ footer {
 }
 
 .htmlanimation #outer-circle:hover {
-  -webkit-box-shadow: 0 0 100px 15px #453D9B;
-  -moz-box-shadow: 0 0 100px 15px #453D9B;
-  box-shadow: 0 0 100px 15px #453D9B;
+  -webkit-box-shadow: 0 0 50px 15px #453D9B;
+  -moz-box-shadow: 0 0 50px 15px #453D9B;
+  box-shadow: 0 0 50px 15px #453D9B;
 }
 
 .htmlanimation #inner-circle {
-  border: 10px solid #ECEBFA;
+  border: 5px solid #ECEBFA;
   border-left-color: #746EBB;
   border-right-color: #746EBB;
   -webkit-transform: rotate(360deg);
@@ -469,19 +469,19 @@ footer {
   background: -webkit-linear-gradient(top, #ecebfa 48%, #746EBB 49%, #746EBB 51%, #ECEBFA 52%);
   background: -moz-linear-gradient(top, #ecebfa 48%, #746EBB 49%, #746EBB 51%, #ECEBFA 52%);
   background: linear-gradient(to bottom, #ecebfa 48%, #746EBB 49%, #746EBB 51%, #ECEBFA 52%);
-  margin: 10px;
-  width: 180px;
-  height: 180px;
-  -webkit-border-radius: 180px;
-  -moz-border-radius: 180px;
-  border-radius: 180px;
+  margin: 5px;
+  width: 90px;
+  height: 90px;
+  -webkit-border-radius: 90px;
+  -moz-border-radius: 90px;
+  border-radius: 90px;
   -webkit-animation: turning_acw 3s infinite;
   -moz-animation: turning_acw 3s infinite;
   animation: turning_acw 3s infinite;
 }
 
 .htmlanimation #center-circle {
-  border: 10px solid #746EBB;
+  border: 5px solid #746EBB;
   border-bottom-color: #ECEBFA;
   -webkit-transform: rotate(360deg);
   -moz-transform: rotate(360deg);
@@ -490,12 +490,12 @@ footer {
   background: -webkit-linear-gradient(top, #fff 48%, #ECEBFA 49%, #ECEBFA 51%, #fff 52%);
   background: -moz-linear-gradient(top, #fff 48%, #ECEBFA 49%, #ECEBFA 51%, #fff 52%);
   background: linear-gradient(to bottom, #fff 48%, #ECEBFA 49%, #ECEBFA 51%, #fff 52%);
-  margin: 10px;
-  width: 140px;
-  height: 140px;
-  -webkit-border-radius: 140px;
-  -moz-border-radius: 140px;
-  border-radius: 140px;
+  margin: 5px;
+  width: 70px;
+  height: 70px;
+  -webkit-border-radius: 70px;
+  -moz-border-radius: 70px;
+  border-radius: 70px;
   -webkit-animation: turning_cw 5s infinite;
   -moz-animation: turning_cw 5s infinite;
   animation: turning_cw 5s infinite;
@@ -503,13 +503,13 @@ footer {
 
 .htmlanimation #content {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 120px;
-  height: 120px;
-  -webkit-border-radius: 140px;
-  -moz-border-radius: 140px;
-  border-radius: 140px;
+  top: 5px;
+  left: 5px;
+  width: 60px;
+  height: 60px;
+  -webkit-border-radius: 70px;
+  -moz-border-radius: 70px;
+  border-radius: 70px;
   background: #2E2A69;
   text-align: center;
   line-height: 120px;
@@ -525,7 +525,7 @@ footer {
   }
   50% {
     text-shadow: 0 10px 10px #000;
-    line-height: 190px;
+    line-height: 95px;
   }
   100% {
     text-shadow: 0 2px 10px #000;
@@ -556,7 +556,7 @@ footer {
   }
   50% {
     text-shadow: 0 10px 10px #000;
-    line-height: 190px;
+    line-height: 95px;
   }
   100% {
     text-shadow: 0 2px 10px #000;
@@ -610,5 +610,162 @@ footer {
   100% {
     transform: rotate(0deg);
   }
+}
+
+/*    coche   */
+@keyframes movecar {
+  0% {
+    left: 0px;
+  }
+  50% {
+    left: 60%;
+  }
+  100% {
+    left: 0px;
+  }
+}
+
+@-webkit-keyframes movecar {
+  0% {
+    left: 0px;
+  }
+  50% {
+    left: 60%;
+  }
+  100% {
+    left: 0px;
+  }
+}
+
+@-moz-keyframes movecar {
+  0% {
+    left: 0px;
+  }
+  50% {
+    left: 60%;
+  }
+  100% {
+    left: 0px;
+  }
+}
+
+.sky {
+  margin-top: 180px;
+  background: #afedf4;
+  margin-bottom: 50px;
+  border: 2px solid black;
+  overflow: hidden;
+  /* this keeps car inside sky div */
+}
+
+.sky img {
+  margin-top: 50px;
+  position: relative;
+  display: inline;
+  animation: movecar 10s linear 1s infinite alternate;
+  -webkit-animation: movecar 10s ease-in-out 1s infinite alternate;
+  -moz-animation: movecar 10s ease-in-out 1a infinite alternate;
+}
+
+.sun {
+  background: #ffe252;
+  width: 45px;
+  height: 45px;
+  border: 2px solid black;
+  border-radius: 50px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.rode1, .rode2 {
+  width: 100%;
+  height: 20px;
+  background: #808080;
+  margin: 0;
+}
+
+.rode1 {
+  border-top: 2px solid #000000;
+}
+
+.rode2 {
+  border-top: 2px dashed #ffffff;
+}
+
+/* flip map  */
+/* entire container, keeps perspective */
+.flip-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/*  UPDATED! flip the pane when hovered */
+.flip-container:hover .back {
+  transform: rotateY(0deg);
+}
+
+.flip-container:hover .front {
+  transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+  width: 100%;
+  height: 480px;
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  backface-visibility: hidden;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*  UPDATED! front pane, placed above back */
+.front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(-180deg);
+}
+
+/* 
+	Some vertical flip updates 
+*/
+.vertical.flip-container {
+  position: relative;
+}
+
+.vertical .back {
+  transform: rotateX(180deg);
+}
+
+.vertical.flip-container:hover .back {
+  transform: rotateX(0deg);
+}
+
+.vertical.flip-container:hover .front {
+  transform: rotateX(180deg);
+}
+
+.text-car {
+  font-family: 'Lora';
+}
+
+.mapa {
+  border: 3px solid black;
 }
 /*# sourceMappingURL=style.css.map */
