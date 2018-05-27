@@ -21,7 +21,7 @@
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Lora|Oswald" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<!-- Custom styles for this template -->
 		<style type="text/css">
 			body {
@@ -40,7 +40,7 @@
 	<body>
 	<link href="<?php echo base_url(); ?>css/scrolling-nav.css" rel="stylesheet">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">GENERADOR DE INFORMES</a>
+        <a class="navbar-brand  w3-animate-top" href="#">GENERADOR DE INFORMES</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -84,18 +84,18 @@
         </div>
 	</nav>
 
-    <main role="main" class="container-fluid">
+    <main role="main" class="container-fluid w3-animate-right">
 	    <div class="row">
-            <div class="col col-md-2">
+            <div class="col-12 col-md-2 col-xs-12">
 	        <div class="ui-widget">
             <form action="<?php echo site_url('GestionHome/filtro'); ?>" method="post">
                 <label for="tags">Apellido del alumno: </label>
-                <input id="tags" name="inpnombre" class="form-control mb-2 mr-sm-2" >
+                <input id="tags" name="inpnombre" class="form-control col-xs-2 mb-2 mr-sm-2" >
                 <button type="submit" id="btnFiltro" class="btn btn-primary mb-2">Submit</button>
             </form>
         </div>
     </div>
-    <div class="col-10" >
+    <div class="col-12 col-md-10" >
 	<?php $i=0; ?>
 			<?php if (isset($results)) { ?>
 			<div class="card-deck">
@@ -103,7 +103,7 @@
                     <?php if(($i%1)==0) echo "</div><div class='card-deck'>"; ?>
                     <?php for($evals=1;$evals<4;$evals++) { ?>   
 				
-                        <div class="card border-faded card-usuarios-home zoom-usuarios">
+                        <div class="card border-faded card-usuarios-home zoom-usuarios w3-hover-shadow w3-center">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12 text-center">

@@ -33,9 +33,14 @@ html {
   min-height: 100%;
 }
 
+main {
+  margin-bottom: 90px;
+}
+
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  min-width: 320px !important;
 }
 
 .footer {
@@ -48,6 +53,7 @@ body {
   /* Vertically center the text there */
   background-color: grey;
   color: rgba(19, 18, 18, 0.898);
+  box-shadow: inset 0px 0px 30px #333;
 }
 
 /* Custom page CSS
@@ -110,9 +116,11 @@ code {
 }
 
 .acordion {
-  -webkit-box-shadow: 0 2px 3px rgba(187, 25, 25, 0.2);
-  -moz-box-shadow: 0 2px 3px rgba(187, 25, 25, 0.2);
-  box-shadow: 0 2px 3px rgba(187, 25, 25, 0.2);
+  box-shadow: 0px 0px 30px #333;
+  background: #eee;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 1vw;
 }
 
 .nav-bar-usuario {

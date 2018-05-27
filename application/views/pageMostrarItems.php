@@ -19,7 +19,7 @@
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Lora|Oswald" rel="stylesheet">
-
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 		<!-- Custom styles for this template -->
 		<style type="text/css">
@@ -63,7 +63,7 @@
 	<body>
 	<link href="<?php echo base_url(); ?>css/scrolling-nav.css" rel="stylesheet">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">GENERADOR DE INFORMES</a>
+        <a class="navbar-brand w3-animate-top" href="#">GENERADOR DE INFORMES</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -108,7 +108,7 @@
         </div>
     </nav>
 
-    <main role="main" class="container">
+    <main role="main" class="container" >
         <div class="row">
              <div class="col">
             </div>
@@ -118,7 +118,7 @@
 			<div class="card-deck">
 				<?php foreach ($items as $data) { ?>
 				<?php if(($i%2)==0) echo "</div><div class='card-deck'>"; ?>
-				<div class="card border-faded card-usuarios zoom" style="margin:5px;margin-bottom :20px;">
+				<div class="card border-faded card-usuarios-home zoom-usuarios w3-hover-shadow w3-center" style="margin:5px;margin-bottom :20px;">
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-6 text-left">
@@ -131,7 +131,7 @@
 							<div class="col-md-12 text-left">
 								<p class="card-text montserratV2">
 									<i class="fa fa-quote-left" style="color:lightblue" aria-hidden="true"></i>
-                                    <?php echo $data['texto'] ; ?>
+                                   <label style="font-family: 'Lora';"> <?php echo $data['texto'] ; ?></label>
                                     <i class="fa fa-quote-right" style="color:lightblue" aria-hidden="true"></i>
                                 </p>
 

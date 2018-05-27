@@ -21,7 +21,7 @@
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Lora|Oswald" rel="stylesheet">
-
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<!-- Custom styles for this template -->
 		<style type="text/css">
 			body {
@@ -32,70 +32,21 @@
 				padding: 3rem 1.5rem;
 				text-align: center;
 			}
-			@keyframes movecar {
-    0%      { left: 0px; }
-    50%     { left: 60%; }
-    100%    { left: 0px; } 
-}
-
-    @-webkit-keyframes movecar {
-        0%      { left: 0px; }
-        50%     { left: 60%; }
-        100%    { left: 0px; } 
-    }
-
-    @-moz-keyframes movecar {
-        0%      { left: 0px; }
-        50%     { left: 60%; }
-        100%    { left: 0px; } 
-    }
-
-.sky {
-	margin-top:300px;
-    background: #afedf4;    
-    margin-bottom: 50px;
-    border: 2px solid black;
-    overflow: hidden;   /* this keeps car inside sky div */
-}
-
-.sky img {
-    margin-top: 50px;          
-    position: relative;
-    display: inline;
-
-    animation: movecar 10s linear 1s infinite alternate; 
-        -webkit-animation: movecar 10s ease-in-out 1s infinite alternate;
-        -moz-animation: movecar 10s ease-in-out 1a infinite alternate;
-}
-
-.sun {
-    background: #ffe252;    
-    width: 45px;
-    height: 45px;
-    border: 2px solid black; 
-    border-radius: 50px;
-    float: left;
-    margin-top: 10px;
-    margin-left: 10px;
-}
-
-.rode1, .rode2 {
-    width: 100%;
-    height: 20px;
-    background: #808080;
-    margin: 0;
-}
-
-.rode1 {
-    border-top: 2px solid #000000;
-}
-
-.rode2 {
-    border-top: 2px dashed #ffffff;
-}
 
 
-
+            @media (max-width: 770px) {
+                .main {
+                    display: none;
+                }
+            }
+            @media (min-width: 771px) {
+                .main {
+                    display: block;
+                }
+			}
+			.card-principal{
+				box-shadow:0px 0px 30px #333!important;
+			}
 
 		</style>
 
@@ -103,7 +54,7 @@
 	<body>
 	<link href="<?php echo base_url(); ?>css/scrolling-nav.css" rel="stylesheet">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">INFORMES DE EVALUACIÓN</a>
+        <a class="navbar-brand  w3-animate-top" href="#">INFORMES DE EVALUACIÓN</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -134,8 +85,8 @@
 	</nav>
 
     <main role="main" class="container-fluid">
-	    <div class="row">
-        <div class="col col-md-2">
+	    <div class="row" >
+        <div class="col col-md-2 main">
 			<div id="main">
 				<div id="outer-circle">
 					<div id="inner-circle">
@@ -146,23 +97,30 @@
 				</div>
 			</div>
     	</div>
-    	<div class="col-8" >
+    	<div class="col-12 col-md-8" >
     	<div id="myerror" style="display:none" class="alert alert-danger text-center" style="margin:15px;" role="alert">No existen informes para el alumno <?php echo $alumno['nombre'] . " " . $alumno['apellido1'] . " ". $alumno['apellido2'] ; ?> </div>
   		<?php foreach($informesalumno as $data){  ?>
-			<div class="card" style="margin:50px">
-				<div class="card-header">
+			<div class="card card-principal" style="margin:50px">
+				<div class="card-header w3-animate-zoom">
 					Curso: <?php echo " " . $data["curso"]; ?>
 				</div>
 				<div class="card-body">
-					<h5 class="card-title">Evaluación: <?php echo " " . $data["trimestre"]; ?></h5>
+					<h5 class="card-title w3-animate-zoom">Evaluación: <?php echo " " . $data["trimestre"]; ?></h5>
 					<a class="btn bg-warning" data-toggle="collapse" href="#collapseEval<?php echo  $data["trimestre"]; ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
 						<i class="fa fa-eye"></i>
 					</a>
 					<div class="collapse" id="collapseEval<?php echo  $data["trimestre"]; ?>">
 						<div class="card card-body" style="margin-top:20px;margin-bottom:20px">
-							<textarea rows="10" readonly >
+						<div class="card bg-light mb-3" >
+							<div class="card-body">
+							<div class="w3-panel w3-pale-red w3-leftbar w3-border-red ">
+							<h5 class="card-title">Informe</h5>
 								<?php echo " " . $data["texto"]; ?>
-							</textarea>
+</div>
+
+							</div>
+						</div>
+
 						</div>
 					</div>
 
@@ -172,7 +130,7 @@
 		<?php  }  ?>
 	</div>
 	</div>
-	<div class="col">
+	<div class="col col-md-2 main">
 <!-- 	<div class="container-fluid" >
 		<div class="sky">
 				<div class="sun" style="height:1.5vw:width:1.5vw;" ></div>

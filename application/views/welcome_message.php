@@ -19,6 +19,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<link rel="stylesheet" href="<?php echo base_url();?>font-awesome/css/fontawesome-all.css">
 		<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Lora|Oswald" rel="stylesheet">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<!-- Custom styles for this template -->
 		<style type="text/css">
 			body {
@@ -28,14 +29,22 @@
 				padding: 0.5rem 1.5rem;
 				text-align: center;
 			}
-
+			.main {
+        display: none;
+    }
+}
+@media (min-width: 701px) {
+    .main {
+        display: block;
+    }
+}
 
 		</style>
 	</head>
 	<body style="background-image: url('<?php echo base_url(); ?>uploads/photo_bg2.jpg');">
 	<link href="<?php echo base_url(); ?>css/scrolling-nav.css" rel="stylesheet">
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">GENERADOR DE INFORMES</a>
+        <a class="navbar-brand  w3-animate-top" href="#">GENERADOR DE INFORMES</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -46,55 +55,55 @@
     <main role="main" class="container" >
 	<div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col col-md-4 main">
 
     </div>
-    <div class="col-6" >
-	<div class="login-box animated fadeInUp">
-				<div class="box-header">
-					<h2>Log In</h2>
-				</div>
-	<form action="<?php echo site_url('Welcome/checkUsuarioForm/'); ?>" id="myformlogin" class=" justify-content-center" method="POST">
-		<?php if(isset($error)){
-		echo '<div id="myerror" class="alert alert-danger" role="alert">
-				El usuario introducido  <a href="#" class="alert-link">NO EXISTE</a>. 
-		</div>'; 
-
-				}
-		?>
-		<div class="form-group row">
-			<div class="col-sm-10 col-md-12">
-				<label for="login">Login:</label>
-				<div class="input-group mb-2">
-					<div class="input-group-prepend">
-						<div class="input-group-text">*</div>
-					</div>
-					<input type="text" id="login" name="login" class="form-control" tabindex="8" aria-labelledby="thelogin" data-validation="custom length"
-						data-validation-regexp="^([a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+)$"
-						data-validation-length="2-12" data-toggle="tooltip" data-placement="right" data-validation-error-msg="<a href='#login'>El login no tiene la longitud adequada o su formato es incorrecto</a>"
-						title="Introduzca el login">
-				</div>
-				<small id="thelogin" class="form-text text-muted">utiliza el username del usuario.</small>
-			</div>
-		</div>
-		<div class="form-group row">
-			<div class="col-sm-10 col-md-12">
-				<label for="pass_confirmation">Password :</label>
-				<div class="input-group mb-2">
-						<div class="input-group-prepend">
-							<div class="input-group-text">*</div>
+    <div class="col-12 col-md-4  mx-auto" >
+			<div class="login-box animated fadeInUp">
+						<div class="box-header">
+							<h2>Log In</h2>
 						</div>
-					<input name="pass_confirmation"  id="pass_confirmation" data-validation="length" data-validation-length="4-12" title="Introduzca password" class="form-control" tabindex="9" aria-labelledby="thepass_confirmation"  data-toggle="tooltip" data-placement="right" data-validation-error-msg="<a href='#pass_confirmation'>Formato Password incorrecto</a>"
-						title="Introduzca verificacion de password">
+			<form action="<?php echo site_url('Welcome/checkUsuarioForm/'); ?>" id="myformlogin" class=" justify-content-center" method="POST">
+				<?php if(isset($error)){
+				echo '<div id="myerror" class="alert alert-danger" role="alert">
+						El usuario introducido  <a href="#" class="alert-link">NO EXISTE</a>. 
+				</div>'; 
+
+						}
+				?>
+				<div class="form-group row">
+					<div class="col-sm-10 col-md-12">
+						<label for="login">Login:</label>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">*</div>
+							</div>
+							<input type="text" id="login" name="login" class="form-control" tabindex="8" aria-labelledby="thelogin" data-validation="custom length"
+								data-validation-regexp="^([a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+)$"
+								data-validation-length="2-12" data-toggle="tooltip" data-placement="top" data-validation-error-msg="<a href='#login'>El login no tiene la longitud adequada o su formato es incorrecto</a>"
+								title="Introduzca el login">
+						</div>
+						<small id="thelogin" class="form-text text-muted">utiliza el username del usuario.</small>
+					</div>
 				</div>
-				<small id="thepass_confirmation" class="form-text text-muted">Es imprescindible escribir el password.</small>
+				<div class="form-group row">
+					<div class="col-sm-10 col-md-12">
+						<label for="pass_confirmation">Password :</label>
+						<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">*</div>
+								</div>
+							<input name="pass_confirmation"  id="pass_confirmation" data-validation="length" data-validation-length="4-12" title="Introduzca password" class="form-control" tabindex="9" aria-labelledby="thepass_confirmation"  data-toggle="tooltip" data-placement="top" data-validation-error-msg="<a href='#pass_confirmation'>Formato Password incorrecto</a>"
+								title="Introduzca verificacion de password">
+						</div>
+						<small id="thepass_confirmation" class="form-text text-muted">Es imprescindible escribir el password.</small>
+					</div>
+				</div>
+					<input type="submit" class="formButton btn btn-primary mb-2" tabindex="12"></input>
+				</form>
 			</div>
 		</div>
-			<input type="submit" class="formButton btn btn-primary mb-2" tabindex="12"></input>
-		</form>
-			</div>
-    </div>
-    <div class="col">
+    <div class="col col-md-4 main">
 
     </div>
   </div>

@@ -21,7 +21,7 @@
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Lora|Oswald" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<!-- Custom styles for this template -->
 		<style type="text/css">
 			body {
@@ -32,16 +32,17 @@
 				padding: 3rem 1.5rem;
 				text-align: center;
 			}
-            @media (max-width: 700px) {
-    .main {
-        display: none;
-    }
-}
-@media (min-width: 701px) {
-    .main {
-        display: block;
-    }
-}
+
+            @media (max-width: 770px) {
+                .main {
+                    display: none;
+                }
+            }
+            @media (min-width: 771px) {
+                .main {
+                    display: block;
+                }
+            }
 
 
 
@@ -53,7 +54,7 @@
 	<body>
 	<link href="<?php echo base_url(); ?>css/scrolling-nav.css" rel="stylesheet">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">INFORMES DE EVALUACIÓN</a>
+        <a class="navbar-brand  w3-animate-top" href="#">INFORMES DE EVALUACIÓN</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -100,9 +101,9 @@
                 </div>
     	    </div>
     	<div class="col-12 col-md-4" >
-            <div id='infoMapa' class="mapa" style="width:100%; height:350px"></div>
+            <div id='infoMapa' class="mapa w3-hover-grayscale" style="width:100%; height:350px"></div>
         </div>
-	<div class="col-4 main">
+	<div class="col-4 main w3-opacity-min">
             <div class="container-fluid" >
             <p class="text-center text-car" style="font-size:12px;height:10px;">Av. Emili Vallès, 4, 08700 Igualada.</p>
                         <p class="text-center text-car" style="font-size:12px;height:10px;">w2.dlagunas@infomila.info</p>
@@ -110,7 +111,7 @@
                 <div class="sky" style="height:0.5vw!important:width:0.8vw;">
                         <div class="sun" style="height:0.5vw!important:width:0.8vw;" ></div>
 
-                        <img class="img-fluid" style="height:1vw" src="https://lh4.googleusercontent.com/-bBB40VF4pGM/VPCtLsmGJ3I/AAAAAAAAAEw/kTbSVtCWqMo/w366-h182-no/pic-car.png"/>
+                        <img class="img-fluid "  style="height:1vw" src="https://lh4.googleusercontent.com/-bBB40VF4pGM/VPCtLsmGJ3I/AAAAAAAAAEw/kTbSVtCWqMo/w366-h182-no/pic-car.png"/>
                         <div class="rode1"></div>
                         <div class="rode2"></div>
                     </div>
@@ -134,7 +135,7 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
-    <script src="<?php echo base_url();?>js/pageFamilia.js">
+    <script src="<?php echo base_url();?>js/pageMapa.js">
 
 	</script>
      <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyAKeyKQMr_VdHEJHFwjKCefCyVLu5OAjJk" type="text/javascript"></script>

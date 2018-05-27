@@ -53,7 +53,8 @@ class Usuario extends CI_Model {
 			$this->db->trans_start(); # Starting Transaction
 			$this->db->trans_strict(FALSE); # See Note 01. If you wish can remove as well 
 		
-			$this->db->set('id',intval($id)+2 );
+			//$this->db->set('id',intval($id)+2 );
+			$this->db->set('id',null );
 			$this->db->set('username', strtoupper ($Usuario[0]));
 			$this->db->set('password',do_hash($Usuario[4], 'md5'));
 			$this->db->set('nombre', strtoupper ($Usuario[1]));
@@ -89,8 +90,7 @@ class Usuario extends CI_Model {
 		
 	}
 	public function yaExiste($Usuario){
-		$query_str="SELECT * FROM Usuario WHERE  upper(email)='". strtoupper($Usuario[8]) ."' ;"; 
-		//echo $query_str; exit;
+		$query_str="SELECT * FROM Usuario WHERE  upper(email)='". strtoupper($Usuario[8]) ."' OR username ='". $Usuario[0] ."' ;"; 
 		$query=$this->db->query($query_str);
 		return $query->result_array();
 		

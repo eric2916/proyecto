@@ -160,7 +160,7 @@
     
 
     <div id="dialog" title="ATENCION">
-        <p>NO TIENES ALUMNOS ASIGNADOS, O NO HAY ITEMS PARA EL INFORME, CONSULTE CON EL ADMINISTRADOR</p>
+        <p>NO HAY ITEMS PARA EL INFORME, CONSULTE CON EL ADMINISTRADOR</p>
     </div>
 <!--     <div id="footer">
     <div class="content-wrap">

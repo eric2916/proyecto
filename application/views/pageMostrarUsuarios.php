@@ -18,8 +18,8 @@
 		<link rel="stylesheet" href="<?php echo base_url();?>font-awesome/css/fontawesome-all.css">
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-		<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Lora|Oswald" rel="stylesheet">
-
+		<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Lora|Oswald|Kavivanar" rel="stylesheet">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<!-- Custom styles for this template -->
 		<style type="text/css">
 			body {
@@ -42,8 +42,8 @@
 
 			@media (max-width: 61.9em) {
 				.foo{
-                font-size:14px;
-            }
+                	font-size:14px;
+            	}
 
 			}
 
@@ -70,7 +70,7 @@
 	<body>
 	<link href="<?php echo base_url(); ?>css/scrolling-nav.css" rel="stylesheet">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">GENERADOR DE INFORMES</a>
+        <a class="navbar-brand  w3-animate-top" href="#">GENERADOR DE INFORMES</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -122,27 +122,27 @@
 			<div class="card-deck">
 				<?php foreach ($usuarios as $data) { ?>
 				<?php if(($i%2)==0) echo "</div><div class='card-deck'>"; ?>
-				<div class="card border-faded card-usuarios zoom" style="margin:5px;margin-bottom :20px;">
+				<div class="card border-faded card-usuarios-home zoom-usuarios w3-hover-shadow w3-center" style="margin:5px;margin-bottom :20px;">
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-6 text-left">
-								<h4 class="card-title montserratV2 text-left">
-									 <?php echo $data['username'] ?>
+								<h4 class="card-title montserratV2 text-left" style="font-family: 'Lora';">
+									 <?php echo strtoupper($data['username']); ?>
 								</h4>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-8 text-left">
 								<p class="card-text montserratV2">
-									<i class="fa fa-user" style="color:red" aria-hidden="true"></i>
-									<?php echo $data['nombre'] ." ".$data['apellido1']  ." " .$data['apellido2'] ; ?>
+									<i class="fa fa-user" style="color:red;" aria-hidden="true"></i>
+									<label style="font-family: 'Lora';"><?php echo $data['nombre'] ." ".$data['apellido1']  ." " .$data['apellido2'] ; ?></label>
                                 </p>
 
 							</div>
 							<div class="col-md-4 text-right">
 								<p class="card-text" style="color:#797979">
                            
-									<i class="fa fa-book"  <?php if($data['idrol']=="3"){echo 'style="color:yellow"';}else{ echo 'style="color:green"';} ?>  aria-hidden="true"></i>
+									<i class="fa fa-book"  <?php if($data['idrol']=="3"){echo 'style="color:blue"';}else{ echo 'style="color:green"';} ?>  aria-hidden="true"></i>
 									<?php echo $rols[$data['idrol']]; ?>
 								</p>
 							</div>

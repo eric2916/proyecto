@@ -17,12 +17,12 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/style.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>font-awesome/css/fontawesome-all.css">
 		<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Lora|Oswald" rel="stylesheet">
-
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 		<!-- Custom styles for this template -->
 		<style type="text/css">
 		input[type="file"] {
-			font-size:1vw !important;
+			font-size:1.2vw !important;
 			color:red;
 			border-radius:5px !important;
 		}
@@ -39,7 +39,7 @@
             }
             @media (max-width: 74.9em) {
 				.foo{
-                	font-size:14px;
+                	font-size:12px;
             	}	
 			}
 
@@ -56,7 +56,7 @@
 
 			@media (max-width: 47.9em) {
 				.foo{
-                	font-size:14px;
+                	font-size:12px;
             	}
 			
 			}
@@ -65,7 +65,7 @@
 
 			@media (max-width: 33.9em) {
 				.foo{
-					font-size:8px;
+					font-size:10px;
 				}
 			}
 
@@ -76,7 +76,7 @@
 	<body>
 	<link href="<?php echo base_url(); ?>css/scrolling-nav.css" rel="stylesheet">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">GENERADOR DE INFORMES</a>
+        <a class="navbar-brand  w3-animate-top" href="#">GENERADOR DE INFORMES</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -123,7 +123,7 @@
         </div>
     </nav>
 
-    <main role="main" class="container">
+    <main role="main" class="container" >
 
     <div class="container">
 		
@@ -147,7 +147,7 @@
 				}
 			?>
             </div>
-            <div class="col-6 col-sm-6">
+            <div class="col-6 col-sm-6" style="min-width:300px!important;">
 
             <div id="accordion" class="acordion">
             <div class="card">
@@ -167,7 +167,7 @@
 				   <form action="<?php echo site_url('GestionImportar/ImportarAlumnos/'); ?>" id="myform" class=" justify-content-center" method="POST"  enctype="multipart/form-data">
 						<div class="input-group">
 							<div class="custom-file">
-								<input type="file" class="form-control-file" id="userfile" name="userfile" required>
+								<input type="file" class="form-control-file form-control-sm" id="userfile" name="userfile" required>
 							
 								</div>
 							
